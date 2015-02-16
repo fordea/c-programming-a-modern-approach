@@ -1,0 +1,30 @@
+scanf("%d%f%d", &i, &x, &j);
+
+assume i & j are int variables and x is a float variable.
+
+if a user enters:
+10.3 5 6
+
+the values of i, x and j would be:
+
+i = 10 - scanf reads the '1' and '0' then encounters the '.', since an integer
+variable cannot contain a decimal point, 10 is stored into i, and the '.' is
+placed back into the input string, leaving it with:
+
+.3 5 6
+
+x = 0.3 - since the next variable is a float (x) and thus can contain decimal points,
+scanf reads the '.', then the '3', then the ' ', then finally the '5'. Since the
+'5' character came after a white-space character, it is put back into the input
+string. This leaves '.3' to be placed in the float variable. As no value is
+provided before the decimal point it is given the value 0.3.
+
+5 6
+
+j = 5 - scanf reads the '5', then the ' ', and finally the '6'. As '6' is
+preceded by a white-space character, it's placed back into the input string.
+Leaving just the value of 5 to be assigned to j.
+
+6
+As no more variables remain to capture the input, 6 can only be accessed with
+another scanf call.

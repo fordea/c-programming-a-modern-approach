@@ -1,0 +1,28 @@
+scanf("%d%f%d", &x, &i, &y);
+
+assume i is an int variable and x & y are float variables.
+
+if a user enters:
+12.3 45.6 789
+
+the values of i, x and j would be:
+
+x = 12.3 - scanf reads '1', '2', '.' (since x is a float variable scanf continues), '3', ' ' and
+'4'. Since '4' is preceded by a white-space character it is put back into the
+input string, leaving us with 12.3 to be assigned to x.
+
+45.6 789
+
+i = 45 - scanf reads '4', '5', '.'. Since i is an integer variable, it cannot
+contains decimals. The '.' is put back in the input string, and i is assigned
+the value 45.
+
+.6 789
+
+y = 0.6 - scanf reads '.' (since x is a float variable scanf continues), '6',
+' ', '7'. Since '7' is preceded by a white-space character, it is put back into
+the input string. y is give the value .6 (0.6).
+
+789
+As no more variables remain to capture the input, 789 can only be accessed with
+another scanf call.
