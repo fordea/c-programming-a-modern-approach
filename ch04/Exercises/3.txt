@@ -1,0 +1,8 @@
+(a) 8 / 5 = 1 
+(b) -8 / 5 = -1 or -2 
+(c) 8 / -5 = -1 or -2
+(d) -8 / -5 = 1 or 2
+
+Division in C89 when the divisor and/or dividend is negative is implementation defined. This means the result
+may either be rounded toward 0 or negative infinity depending on the hardware / software implemented 
+behaviour.

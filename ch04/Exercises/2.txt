@@ -1,0 +1,19 @@
+If i and j are positive integers, does (-i)/j always have the same value as -(i/j)?
+
+Answer: Yes
+
+Rules for division
+    Pos / Pos = Pos
+    Pos / Neg = Neg
+    Neg / Pos = Neg
+    Neg / Neg = Pos
+
+Whenever one of the values is negative, we can change it to postive by removing the minus, 
+carry out the division and then simply put the minus back on the result.
+
+E.g:
+
+    10 / 5 = 2
+    10 / -5 = -2
+    -10 / 5 = -2
+    -10 / -5 = 2

@@ -1,0 +1,7 @@
+(a) 8 / 5 = 1 
+(b) -8 / 5 = -1 
+(c) 8 / -5 = -1
+(d) -8 / -5 = 1
+
+Division in C99 explicity rounds the result of division towards 0 when the divisor and/or dividend
+is negative.
