@@ -1,0 +1,28 @@
+scanf format strings equivalency
+
+(a) "%d" vs. " %d" - Equivalent, white-space character in format string matches
+ANY number of white-space characters in the input string (including none).
+
+(b) "%d-%d-%d" vs. "%d -%d -%d" - Equivalent, white-space characters in format
+string match ANY number of white-space characters in the input string
+(including none).
+
+(c) "%f" vs. "%f " - Different Input, But capture same values (a single float)
+"%f" requires a number to be input and the user to hit enter. e.g: 34.05->
+
+"%f " requires a number to be input, then one or more white-space characters,
+then finally any number of non-whitespace characters. e.g: 34.05  v->
+
+Either way the captured float value would be the same, the second format which
+requires white-space and any non white-space character would keep prompting
+the user with input lines until they do enter a character, however this input
+will not be captured by the format string.
+
+(d) "%f,%f" vs. "%f, %f" - Equivalent, white-space characters in format
+string match ANY number of white-space characters in the input string
+(including none).
+
+
+
+
+
