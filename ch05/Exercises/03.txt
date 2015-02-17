@@ -56,12 +56,12 @@
 
     ((++i) || ((++j) && (k = 1 + 1)))
     ((++i) || ((j = 1 + 1) && 2))
-    ((i = i + 1) || (1 && 2))
+    ((i = i + 1) || (2 && 2))
     (2 || 1)
     1
 
     Expected output
     1 (1 or 2) (1 or 2) (1 or 2)
     unsure of the values printed for i, j and k due to undefined behavior (when the side effects of 
-    assigning i, j and k their values of 2)
+    assigning i, j and k their values of 2 occur.)
     
