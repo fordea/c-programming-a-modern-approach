@@ -1,0 +1,7 @@
+(a) 8 % 5 = 3 
+(b) -8 % 5 = -3 
+(c) 8 % -5 = 3
+(d) -8 % -5 = -3
+
+C99's modulo operator is specified to always have the same sign as the divisor, and the division operator
+will always truncate the result towards 0. 
