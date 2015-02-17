@@ -1,0 +1,18 @@
+(a) 8 % 5 = 3 
+(b) -8 % 5 = -3 or 2 
+(c) 8 % -5 = -3 or 2
+(d) -8 % -5 = -3 or 2
+
+C89's modulo operator is implementation defined, and therefore the result can either be positive or negative.
+
+E.g:
+
+Negative:
+-8 / 5
+-1 r-3
+-3 mod
+
+Positive:
+-8 / 5
+-8 = -2 * 5 + (2)
+2 mod
