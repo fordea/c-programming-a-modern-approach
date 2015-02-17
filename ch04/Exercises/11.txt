@@ -3,7 +3,7 @@
     printf("%d", i);
 
     output:
-    0 1
+    0 2
 
 (b) i = 10; j = 5;
     printf("%d ", i++ - ++j);
