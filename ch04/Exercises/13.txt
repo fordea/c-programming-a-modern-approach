@@ -1,0 +1,30 @@
+Only one of the expressions ++i and i++ is exactly the same as (i += 1): which is it?
+
+Firstly (i += 1) is equivalent to i = i + 1.
+i = i + 1 returns the value i + 1, and as a side effect assigns i this value.
+
+++i firstly increments i, then returns the new value of i (postfix).
+
+i++ returns the value of i, and then sometime afterward increments i (before the next statement).
+
+therefore using an example of 1 = 5:
+
+(i += 1)
+i = i + 1
+i = 5 + 1
+i = 6
+return 6
+
+++i
+i = i + 1
+i = 5 + 1
+i = 6
+return 6
+
+i++
+return 5
+i = i + 1
+i = 5 + 1
+i = 6
+
+(i += 1) is equivalent to ++i (postfix)
