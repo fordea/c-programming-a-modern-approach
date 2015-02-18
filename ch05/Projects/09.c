@@ -29,16 +29,16 @@ int main(void)
             date1 = EARLIER;
 
         } else { //Same Month
-            if (d1_day > d2_day) { //Later Day
-                date1 = LATER;
+              if (d1_day > d2_day) { //Later Day
+                  date1 = LATER;
 
-            } else if (d1_day < d2_day) { //Earlier Day
-                date1 = EARLIER;
+              } else if (d1_day < d2_day) { //Earlier Day
+                  date1 = EARLIER;
 
-            } else { //Same Day
-                date1 = SAME;
-            }       
-        }
+              } else { //Same Day
+                  date1 = SAME;
+              }       
+          }
     }
 
     switch (date1) {
