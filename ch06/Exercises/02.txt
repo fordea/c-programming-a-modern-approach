@@ -1,0 +1,10 @@
+What output does the following program produce?
+
+i = 9384;
+do {
+    printf("%d ", i);
+    i /= 10;
+} while (i > 0);
+
+This loop will print a line of values that are each one tenth of the previous value until the value is less than 0:
+9384 938 94 9 
