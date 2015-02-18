@@ -1,0 +1,11 @@
+Which one of the following statements is not equivalent to theother two (assuming that the
+loop bodies are the same)?
+
+(a) while (i < 10) {...}
+(b) for (; i < 10;) {...}
+(c) do {...} while (i < 10);
+
+Loop c is different to the other two, because a 'do while' loop is guaranteed to execute at least once.
+This is because the termination condition is checked after the loop body is executed. This means
+that when i is not less than 10, loop (a) and (b) won't be executed at all, but loop (c) will have
+executed once.
