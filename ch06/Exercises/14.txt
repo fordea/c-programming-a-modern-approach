@@ -1,0 +1,8 @@
+Find the error in the following program fragment and fix it.
+
+if (n % 2 == 0);
+    printf("n is even\n");
+
+The problem is the semicolon at the end of the if statement, by placing a semi colon here
+we are creating a null statement which ends the if prematurely. This means that the printf
+statement isn't inside the if statement and thus will always be executed.
