@@ -1,0 +1,27 @@
+Which one of the following statements is not equivalent to the other two
+(assuming that the loop bodies are the same)?
+
+(a) for (i = 0; i < 10; i++) ...
+(b) for (i = 0; i < 10; ++i) ...
+(c) for (i = 0; i++ < 10; ) ...
+
+Loop c behaves differently to the other two.
+To understand why this is we must understand the 3 expressions in a for statement:
+
+for (initializer(s); termination condition(s); loop counter(s))
+
+When the for statement is executed it performs steps in a particular order:
+1: It initializes any variables in the initializer(s) expression if this is the first execution.
+2: It performs a conditional expression to ensure the termination condition isn't met.
+3: It executed the loop body provided the conditional expression in step 2 evaluated to false.
+4: It modifies the variables as specified in the loop counter(s) condition.
+
+Repeat steps 2 to 4 until the conditional expression in step 2 evaluates to false.
+
+What makes loop c behave differently is that the variable controlling the loop counter (i)
+is modified due to a side effect in the conditional expression.
+When i++ < 10 is checked i++ returns i, and as a side effect increments i sometime shortly after.
+So as soon as the loop has been entered for the first time, i will have already been incremented to 1.
+It also means that this loop will iterate up to i = 10, even though the conditional expression
+checks to ensure that i is less than 10.
+
