@@ -1,0 +1,10 @@
+For each of the following items of data, specify which one of the types char,
+short, int, or long is the smallest one guaranteed to be large enough to store
+the item.
+
+(a) Days in a month  - Decimal: 31    Binary: 11111 (5 bits)              char
+(b) Days in a year   - Decimal: 365   Binary: 101101101 (9 bits)          short 
+(c) Minutes in a day - Decimal: 1440  Binary: 10110100000 (11 bits)       short
+(d) Seconds in a day - Decimal: 86400 Binary: 10101000110000000 (17 bits) long
+
+

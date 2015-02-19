@@ -1,0 +1,11 @@
+Which of the following are not legal types in C?
+
+(a) short unsigned int
+(b) short float
+(c) long double
+(d) unsigned long
+
+The identifier in (c) 'short float' is not legal.
+Floating point numbers can only be represented by the floating types:
+float, double and long double
+

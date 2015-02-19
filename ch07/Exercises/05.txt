@@ -1,0 +1,11 @@
+Which of the following is not a legal way to write the number 65? (Assume
+that the character set is ASCII.)
+
+(a) 'A'
+(b) 0b1000001
+(c) 0101
+(d) 0x41
+
+Answer (b) is not legal as C doesn't allow us to write binary literals,
+even though the number 1000001 is 65 in binary it isn't legal in C.
+
