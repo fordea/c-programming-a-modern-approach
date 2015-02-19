@@ -1,0 +1,5 @@
+Give the decimal value of each of the following integer constants:
+
+(a) 077 octal = 63 decimal (7 eights plus 7 ones) 
+(b) 0x77 hexadecimal = 119 decimal (7 sixteens plus 7 ones) 
+(c) 0XABC hexadecimal = 2748 decimal (10 two-hundred and fifty sixes plus 11 sixteens plus 12 ones)
