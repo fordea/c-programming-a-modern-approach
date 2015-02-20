@@ -1,0 +1,7 @@
+Suppose that i is a variable of type int, j is a variable of type long, and
+k is a variable of type double. What is the type of the expression:
+i * f / d?
+
+As double is the largest sized variable used in this operation, the other two
+values must be converted to a double so that the operation can be performed.
+This means that the expression evaluates to a double value.

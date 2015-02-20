@@ -1,0 +1,8 @@
+For each of the following character escapes, give the equivalent octal
+escape. (Assume that the character set is ASCII.)
+
+    Escape seq.  Value   Octal escape
+(a) \b           8       \10
+(b) \n           10      \12
+(c) \r           13      \15
+(d) \t           9       \11

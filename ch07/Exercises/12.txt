@@ -1,0 +1,13 @@
+Suppose that i is a variable of type int, f is a variable of type float, and d is
+a variable of type double. Explain what conversions take place during the 
+execution of the following statement:
+d = i + f
+
+Order of evaluation:
+double = (int + float)
+double = float
+double
+
+As addition has a higher precedence than assignment, the value of i + f is converted
+to float. When assingment occurs, the expression on the right side is always converted
+to the type of the variable on the left side. This converts the float to a double.

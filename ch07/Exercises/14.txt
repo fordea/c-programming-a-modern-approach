@@ -1,0 +1,18 @@
+Does the following statement always compute the fractional part of f correctly
+(assuming that f and frac_part are float variables)?
+
+frac_part = f - (int) f;
+
+This statement does compute the fractional part of f correctly because of
+operator precendence
+
+e.g: f = 5.6
+
+(frac_part = (5.6 - ((int) 5.6)));
+(frac_part = (5.6 - 5));
+frac_part = 0.6;
+
+Order of presendence is
+Cast (3)
+Subtraction (5)
+Assignment (15)

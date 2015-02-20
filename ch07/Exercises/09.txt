@@ -1,0 +1,5 @@
+Suppose that i and j are variables of type int. What is the type of the expression
+i / j + 'a'?
+
+The type of this expression is an int. As the largest value in the expression is an
+int, the char 'a' is converted to an int so that the operation can be carried out.
