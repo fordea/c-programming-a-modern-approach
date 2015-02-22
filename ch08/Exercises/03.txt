@@ -1,0 +1,9 @@
+Write a declaration of an array named weekend containing seven bool values.
+Include an initializer that makes the first and last values true; all other
+values should be false.
+
+#define true 1
+#define false 0
+typedef int bool;
+
+bool weekend[] = {true, false, false, false, false, false, true};

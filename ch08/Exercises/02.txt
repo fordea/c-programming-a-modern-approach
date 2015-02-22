@@ -1,0 +1,13 @@
+Describe how to use a digit (in character form) as an array subscript.
+
+int number_count[10];
+char seven = '7';
+number_count[seven - '0']++;
+
+The above snippet should increment the seventh element in the number_count
+array by one.
+
+Ascii codes for 0 to 9 are 48 to 57.  
+number_count['7' - '0']++;
+number_count[55 - 48]++;
+number_count[7]++;

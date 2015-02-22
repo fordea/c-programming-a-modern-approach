@@ -1,0 +1,12 @@
+The number of elements in an array can be calculated using:
+sizeof (a) / sizeof(a[0])
+
+It can also be calculated using the expression:
+sizeof (a) / sizeof(t) 
+where t is the type of a's elements
+
+The second technique is considered inferior to the first because if we 
+decide to change the type of element that 'a' stores later down the line,
+(for instance changing an int to a long, or a float to double).
+then we would need to refactor every call to sizeof(t) to the new element
+type so that we could correctly calculate the number of elements in the array.
