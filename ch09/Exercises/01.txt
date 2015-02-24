@@ -1,0 +1,26 @@
+The following function contains two errors:
+
+double triangle_area(double base, height)
+double product;
+{
+    product = base * height;
+    return product / 2;
+}
+
+The first error is that the second parameter 'height' isn't given a type. A
+specified type must be given to each parameter, even when they may all have the
+same type.
+
+The second error is that the local variable 'product' is not declared within
+the function body. All declarations belonging to a function must be written
+inside its curly braces.
+
+Corrected function:
+
+double triangle_area(double base, double height)
+{
+    double product;
+
+    product = base * height;
+    return product / 2;
+}
