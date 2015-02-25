@@ -1,0 +1,35 @@
+The following function is supposed to return true if any element of the array a
+has the value 0 and false if all elements are nonzero. Sadly, it contains an error.
+Find the error and show how to fix it:
+
+bool has_zero(int a[], int n)
+{
+    int i;
+    
+    for (i = 0; i < n; i++)
+        if (a[i] == 0)
+            return true;
+        else
+            return false;
+}
+
+The problem with the function is that it will return true or false after one iteration.
+if the first element of a is 0, it returns true, but if the first element is non-zero
+it returns false. Instead, we want it to check that ALL elements in the array are
+positive before returning false. 
+To fix this all we need to do is remove the else clause within the loop,
+and place 'return false' after the loop as it could only ever be reached when all
+elements are non zero.
+
+Fixed version:
+
+bool has_zero(int a[], int n)
+{
+    int i;
+
+    for (i = 0; i < n; i++)
+        if (a[i] == 0)
+            return true; //Will return from the function when a zero element is found
+
+    return false; //Can only be reached if all elements are non zero
+}
