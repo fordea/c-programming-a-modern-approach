@@ -1,0 +1,4 @@
+Suppose that a program has only one function (main). How many different variables named
+i could this program contain?
+
+One external, one inside main. one in every block / nested block within main.

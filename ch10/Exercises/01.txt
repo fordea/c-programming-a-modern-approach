@@ -1,0 +1,28 @@
+The following programs outline shows only function definitions and variable 
+declarations.
+
+int a;
+void f(int b)
+{
+    int c;
+}
+void g(void)
+{
+    int d;
+    {
+        int e;
+    } 
+}
+int main(void)
+{
+    int f;
+}
+
+For each of the following scopes, list all variable and parameter names visible in
+that scope:
+
+(a) The f function: int a, int b, int c.
+(b) The g function: int a, int d.
+(c) The block in which e is declared: int a, int d, int e.
+(d) The main function: int a, int f.
+
