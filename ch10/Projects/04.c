@@ -124,7 +124,8 @@ bool check_for_duplicate_card(int rank, int suit, int hand[5][2], int cards_read
 void analyze_hand(int hand[5][2])
 {
   int num_consec = 0;
-  int card, rank;
+  int card, rank, suit;
+  int i, j, smallest;
 
   straight = false;
   flush = false;
@@ -134,7 +135,6 @@ void analyze_hand(int hand[5][2])
   royal_flush = false;
 
   /* Sort the cards by rank via selection sort*/
-  int i, j, smallest, temp_suit, temp_rank;
   for (i = 0; i < NUM_CARDS; i++) {
       smallest = i;
 
@@ -143,12 +143,12 @@ void analyze_hand(int hand[5][2])
             smallest = j;
       }
 
-      temp_rank = hand[i][0];
-      temp_suit = hand[i][1];
+      rank = hand[i][0];
+      suit = hand[i][1];
       hand[i][0] = hand[smallest][0];
       hand[i][1] = hand[smallest][1];
-      hand[smallest][0] = temp_rank;
-      hand[smallest][1] = temp_suit;
+      hand[smallest][0] = rank;
+      hand[smallest][1] = suit;
   }
 
   /* check for flush */
@@ -191,18 +191,8 @@ void analyze_hand(int hand[5][2])
 
   /* Checks for a royal flush 
    * first card must be rank 8 (number 10) for royal flush to be a possibility */
-  if (hand[0][0] == 8) {
-
-      for (card = 1; card < NUM_CARDS; card++) {
-          if (hand[card][0] - hand[card-1][0] != 1) //current rank is not 1 greater than prev
-              break;
-          if (hand[card][1] != hand[card-1][1]) //current suit is not same as prev 
-              break;
-          
-          if (card == NUM_CARDS - 1)
-              royal_flush = true;
-      }
-  }
+  if (hand[0][0] == 8 && straight && flush)
+      royal_flush = true;
   
 }
 
