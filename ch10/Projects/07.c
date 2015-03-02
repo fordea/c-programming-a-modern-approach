@@ -6,10 +6,10 @@
 #define DIGIT_WIDTH 3
 #define DIGIT_SPACING 1
 #define MAX_DIGITS_SPACE MAX_DIGITS * (DIGIT_WIDTH + DIGIT_SPACING)
+#define TOTAL_SEGMENTS 7
 
 void clear_digits_array(void);
 void process_digit(int digit, int position);
-void process_col_segment(int digit, int row, int col, int position);
 void print_digits_array(void);
 
 const int segments[10][7] = {{1, 1, 1, 1, 1, 1, 0}, /* 0 */
@@ -22,6 +22,16 @@ const int segments[10][7] = {{1, 1, 1, 1, 1, 1, 0}, /* 0 */
 /* Row 2:   4 | 3 | 2 */     {1, 1, 1, 0, 0, 0, 0}, /* 7 */
 /*             ---    */     {1, 1, 1, 1, 1, 1, 1}, /* 8 */
 /*                    */     {1, 1, 1, 1, 0, 1, 1}};/* 9 */
+
+/* row, col position of the seven segments in a 3 by 3 grid 
+ * positions 0,0 and 0,2 do not contain a segment */
+const int segment_rowcol[TOTAL_SEGMENTS][2] = { {0, 1},   /* 0 */
+                                                {1, 2},   /* 1 */
+                                                {2, 2},   /* 2 */
+                                                {2, 1},   /* 3 */
+                                                {2, 0},   /* 4 */
+                                                {1, 0},   /* 5 */
+                                                {1, 1} }; /* 6 */
 
 char digits[DIGIT_HEIGHT][MAX_DIGITS_SPACE];
 
@@ -55,43 +65,20 @@ void clear_digits_array(void)
 /* Process a single digit */
 void process_digit(int digit, int position)
 {
-    int row, col;
-    for (row = 0; row < DIGIT_HEIGHT; row++) {
-        for (col = position; col < position + DIGIT_WIDTH; col++) {
-            process_col_segment(digit, row, col - position, col);
+    int segment, segment_row_pos, segment_col_pos;
+
+    for (segment = 0; segment < TOTAL_SEGMENTS; segment++) {
+
+        if (segments[digit][segment]) {
+            segment_row_pos = segment_rowcol[segment][0];
+            segment_col_pos = position + segment_rowcol[segment][1];
+
+            if (segment % 3 == 0) //segments divisible by 3 are always '_'
+                digits[segment_row_pos][segment_col_pos] = '_';
+            else
+                digits[segment_row_pos][segment_col_pos] = '|';
         }
     }
-}
-
-/* Process a single column segment in a digit */
-void process_col_segment(int digit, int row, int col, int position)
-{
-    switch(row) {
-    
-        case 0: //Segment 0(col 1)
-            if (col == 1 && segments[digit][0])
-                digits[row][position] = '_';
-            break;
-
-        case 1: //Segments 5(col 0), 6(col 1), and 1(col 2)
-            if (col == 0 && segments[digit][5])
-                digits[row][position] = '|';
-            else if (col == 1 && segments[digit][6])
-                digits[row][position] = '_';
-            else if (col == 2 && segments[digit][1])
-                digits[row][position] = '|';
-            break;
-
-        case 2: //Segments 4(col 0), 3(col 1), and 2(col 2)
-            if (col == 0 && segments[digit][4])
-                digits[row][position] = '|';
-            else if (col == 1 && segments[digit][3])
-                digits[row][position] = '_';
-            else if (col == 2 && segments[digit][2])
-                digits[row][position] = '|';
-            break;
-    }
-
 }
 
 /* Print the digits array */
