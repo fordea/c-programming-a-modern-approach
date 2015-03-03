@@ -5,7 +5,7 @@
 
 #define DIGIT_HEIGHT 3
 #define DIGIT_WIDTH 3
-#define DIGIT_SPACING 4
+#define DIGIT_SPACING 1
 
 #define MAX_DIGITS_SPACE (MAX_DIGITS * (DIGIT_WIDTH + DIGIT_SPACING)) - DIGIT_SPACING
 #define MAX_SEGMENTS 7
@@ -68,10 +68,12 @@ int main(void)
 
     clear_digits_array();
     printf("Enter a number (up to 10 digits): ");
-    while ((ch = getchar()) != '\n' && position < MAX_DIGITS_SPACE && isdigit(ch)) {
+    while ((ch = getchar()) != '\n' && position < MAX_DIGITS_SPACE) {
 
-        process_digit(ch - '0', position);
-        position += DIGIT_WIDTH + DIGIT_SPACING;
+        if (isdigit(ch)) {
+            process_digit(ch - '0', position);
+            position += DIGIT_WIDTH + DIGIT_SPACING;
+        }
     }
     print_digits_array();
 
