@@ -1,0 +1,12 @@
+Suppose that high, low, and middle are all pointer variables of the same type, and that
+low and high point to elements of an array. Why is the following statement illegal, and
+how could it be fixed?
+
+middle = (low + high) / 2;
+
+The expression low + high is not legal because we cannot add two pointers together.
+To get the middle element we can use subtraction: ((high - low) / 2) + low
+
+E.g Low = 23, High = 48;
+
+high - low = 25, / 2 = 12, + low = 35

@@ -1,0 +1,24 @@
+What will be the contents of the a array after the following statements are executed?
+
+#define N 10
+
+int a[N] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+int *p = &a[0], *q = &a[N-1], temp;
+
+while (p < q) {
+    temp = *p;
+    *p++ = *q;
+    *q-- = temp;
+}
+
+First iteration:
+p = &a[0], q = &a[9] (N-1)
+temp = element in a[0] (1)
+set element a[0] to the value in a[9] (10)
+p++ (p now points to &a[1])
+a[9] = 1
+q-- (q now points to &a[8] (N-2))
+
+End result (reverses the array by swapping elements at either side until middle is reached):
+
+{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
