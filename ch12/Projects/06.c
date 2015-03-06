@@ -14,8 +14,8 @@
 
 #define N 10
 
-void quicksort(int a[], int *low, int *high);
-int *split(int a[], int *low, int *high);
+void quicksort(int *low, int *high);
+int *split(int *low, int *high);
 
 int main(void)
 {
@@ -25,7 +25,7 @@ int main(void)
   for (i = 0; i < N; i++)
     scanf("%d", &a[i]);
 
-  quicksort(a, a, a + N - 1);
+  quicksort(a, a + N - 1);
 
   printf("In sorted order: ");
   for (i = 0; i < N; i++)
@@ -35,17 +35,17 @@ int main(void)
   return 0;
 }
 
-void quicksort(int a[], int *low, int *high)
+void quicksort(int *low, int *high)
 {
   int *middle;
 
   if (low >= high) return;
-  middle = split(a, low, high);
-  quicksort(a, low, middle - 1);
-  quicksort(a, middle + 1, high);
+  middle = split(low, high);
+  quicksort(low, middle - 1);
+  quicksort(middle + 1, high);
 }
 
-int *split(int a[], int *low, int *high)
+int *split(int *low, int *high)
 {
   int part_element = *low;
 
