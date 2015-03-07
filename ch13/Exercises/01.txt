@@ -1,0 +1,20 @@
+The following function calls supposedly write a single new-line character, but some are
+incorrect. Identify which calls don't work and explain why.
+
+(a) printf("%c", '\n');         (g) putchar('\n');
+(b) printf("%c", "\n");         (h) putchar("\n");
+(c) printf("%s", '\n');         (i) puts('\n');
+(d) printf("%s", "\n");         (j) puts("\n");
+(e) printf('\n');               (k) puts(" ");
+(f) printf("\n");
+
+Incorrect calls:
+(b) printf expects second argument to be of type char to match format specifier %c, second
+    argument received is type char *.
+(c) printf expects second argument to be of type char * to match format specifier %s, second
+    argument received is type char.
+(e) printf expects first argument to be type const char *, received type char.
+(h) putchar expects type char, received type char *.
+(i) puts expects type const char *, received type char.
+(j) puts already prints a newline at the end so this statment prints two newline chars.
+(k) prints a space and a new line character rather than just a newline char.
