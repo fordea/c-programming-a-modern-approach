@@ -1,0 +1,13 @@
+Suppose that str is an array of characters. Which one of the following statements is not
+equivalent to the other three?
+
+(a) *str = 0;
+(b) str[0] = '\0'
+(c) strcpy(str, "");
+(d) strcat(str, "");
+
+Statement d behaves differently to the others because strcat appends a null character to
+the end of str, rather than set the first element in str to be the null character which
+the other statements perform (strcpy does this because it overwrites the original string
+with "").
+
