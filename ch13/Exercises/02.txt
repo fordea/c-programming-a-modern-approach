@@ -1,0 +1,22 @@
+Suppose that p has been declared as follows:
+
+char *p = "abc";
+
+Which of the following function calls are legal? Show the output produced by each legal
+call, and explain why the others are illegal.
+
+(a) putchar(p) - Illegal. putchar function expects one arguments of type int (character).
+    This statement provides putchar with a pointer to a char.
+
+(b) putchar(*p) - Legal. putchar function expects one argument of type int (character).
+    This statement provides putchar with an int by dereferencing the pointer p, which
+    is the characters integer value at position 0 in the string literal. This statement
+    will print the character a.
+
+(c) puts(p) - Legal. puts function expects one argument being a pointer to a char.
+    p is a pointer to a char and the output printed by puts is abc.
+
+(d) puts(*p) - Illegal. puts function expect one argument being a pointer to a char.
+    dereferencing p provides a value of type char, which cannot be passed to the puts
+    function.
+    

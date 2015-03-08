@@ -1,0 +1,22 @@
+Suppose that we call scanf as follows:
+
+scanf("%d%s%d", &i, s, &j);
+
+If the user enters 12abc34 56def78, what will be the values of i, s, and j after the
+call? (Assume that i and j are int variables and s is an array of characters.)
+
+%d will read any number of decimal digits, so the first call of %d will read 12, then it
+will encounter the character a which isn't a decimal digit, so it will put it back.
+This gives i the value 12.
+
+%s will read any number of non-whitespace characters, so will read abc34, then it will 
+encounter the white space character which is put back.
+This gives s the value abc34.
+
+%d will ignore that previous whitespace character, and then read any number of decimal
+digits. It reads 56, then encounters the character s which is put back.
+This gives j the value 56.
+
+i = 12
+s = abc34
+j = 56
