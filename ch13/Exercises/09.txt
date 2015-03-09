@@ -1,0 +1,13 @@
+What will be the value of the string s1 after the following statements have been executed?
+
+strcpy(s1, "computer");
+strcpy(s2, "science");
+if (strcmp(s1, s2) < 0)
+    strcat(s1, s2);
+else
+    strcat(s2, s1);
+s1[strlen(s1)-6] = '\0';
+
+after strcmp and strcat: computerscience\0
+after s1[strlen(s1)-6] = '\0': strlen(s1) = 15 - 6 = 9, s1[9] = c
+s1 is "computers\0" after s1[9] changed to '\0'.

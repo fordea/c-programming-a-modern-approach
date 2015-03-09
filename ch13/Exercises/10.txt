@@ -1,0 +1,14 @@
+The following function supposedly creates an identical copy of a string. What's wrong with
+the function?
+
+char *duplicate(const char *p)
+{
+    char *q;
+
+    strcpy(q, p);
+    return q;
+}
+
+Declaring q as a pointer only sets aside enough memory for a pointer variable, so it 
+doesn't allocate enough space to store a string. First we need to make a character array
+to store a string and then have q point to the first element in this array.
