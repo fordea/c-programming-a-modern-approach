@@ -1,0 +1,10 @@
+What will be the value of the string s1 after the following statements have been executed?
+
+strcpy(str, "tire-bouchon");
+str is currently: tire-bouchon\0
+
+strcpy(&str[4], "d-or-wi");
+str is currently: tired-or-wi\0
+
+strcat(str, "red?");
+str is currently: tired-or-wired?\0
