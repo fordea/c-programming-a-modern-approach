@@ -1,0 +1,18 @@
+What does the following program print?
+
+#include <stdio.h>
+
+int main(void)
+{
+    char s[] = "Hsjodi", *p;
+
+    for (p = s; *p; p++)
+        --*p;
+    puts(s);
+    return 0;
+}
+
+The program prints: Grinch
+
+--*p first gets the value pointed to by p, the decrements it. This is because the indirection
+operator and prefix decrement operator are of the same precedence, and right associative.
