@@ -1,0 +1,14 @@
+For each of the following macros, give an example that illustrates a proble with the macro
+and show how to fix it.
+
+(a) #define AVG(x,y) (x-y)/2
+    problem:
+    AVG(2+2, 3+3);  preprocessor replacement: (2+2-3+3)/2. Evaluates to 2 
+    To fix we need parentheses around individual function arguments, and the entire replacement list
+    #define AVG(x,y) (((x)-(y))/2))
+
+(b) #define AREA(x,y) (x) * (y)
+    problem:
+    sum = 5 / AREA(2,5);  preprocessor replacement: 5 / (2) * (5). Evalutes to 10
+    To fix we need parentheses around the replacement list
+    #define AREA(x,y) ((x) * (y))
