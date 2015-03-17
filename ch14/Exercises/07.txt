@@ -1,0 +1,30 @@
+Let GENERIC_MAX be the following macro:
+
+#define GENERIC_MAX(type)       \
+type type##_max(type x, type y) \
+{                               \
+    return x > y ? x : y;       \
+}   
+
+(a) Show the preprocessor's expansion of GENERIC_MAX(long).
+
+    long long_max(long x, long y)
+    {
+        return x > y ? x : y;
+    }
+
+(b) Explain why GENERIC_MAX doesn't work for basic types such as unsigned long.
+
+    unsigned long would not work for this macro because the argument provided to 
+    GENERIC_MAX is used to create a function name by joining the tokens type and _max.
+    As a function name cannot have  any spaces in it, passing any argument with
+    a space will cause an error.
+
+(c) Describe a technique that would allow us to use GENERIC_MAX with basic types such as
+    unsigned long.
+
+    To get around this problem, we can first assign a basic type that has one or more spaces
+    in it to a custom typedef name without spaces. E.g:
+    typedef unsigned long u_long;
+    Now when we pass u_long to the GENERIC_MAX macro, it can create a function name by joining
+    the tokens u_long and _max to create u_long_max.
