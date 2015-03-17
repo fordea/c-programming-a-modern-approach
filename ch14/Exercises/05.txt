@@ -1,0 +1,34 @@
+Let TOUPPER be the following macro:
+
+#define TOUPPER(c) ('a'<=(c)&&(c)<='z'?(c)-'a'+'A':(c))
+
+Let s be a string and let i be an int variable. Show the output produced by each of the following
+program fragments:
+
+(a) strcpy(s, "abcd");
+    i = 0;
+    putchar(TOUPPER(s[++i]));
+
+    steps:
+    ('a'<=(s[++i])&&('s[++i]')<='z'?('s[++i]')-'a'+'A':('s[++i]'))
+    condition is true
+    i is currently 2 as the condition is fully checked, so its incremented twice.
+    ('s[++i]')-'a'+'A'
+    ('s[3]')-'a'+'A'
+    ('d')-'a'+'A' = 100 - 97 + 65 = 68 (character 'D')
+    outputs the character 'D'.
+
+(b) strcpy(s, "0123");
+    i = 0;
+    putchar(TOUPPER(s[++i]));
+
+    steps:
+    ('a'<=('s[++i]')&&('s[++i]')<='z'?('s[++i]')-'a'+'A':('s[++i]'))
+    condition is false
+    i is currently 1 as it fails the first check before the Logical and in the condition
+    so i is only incremented once.
+
+    ('s[++i]')
+    ('s[2]')
+    ('2')
+    outputs the character '2'.
