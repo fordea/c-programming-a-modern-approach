@@ -1,0 +1,14 @@
+Which of the following should not be put in a header file? Why not?
+
+(a) Function Prototypes
+(b) Function Definitions
+(c) Macro Definitions
+(d) Type Definitions
+
+Answer: (b)
+You shouldn't define any functions in a header file, only declare their prototypes. If a
+function is defined within a header file, then any source file that includes the header file
+will need to compile that function. This would cause the function to be compiled multiple times
+instead of once if it was listed in a source file. Compiling the same function multiple times
+will cause an error at the linking stage, because a linker only expects each function to be 
+defined once.
