@@ -1,0 +1,11 @@
+Suppose that the macro M has been defined as follows:
+
+#define M 10
+
+Which of the following tests will fail?
+
+(a) #if M           succeed
+(b) #ifdef M        succeed
+(c) #ifndef M       fail
+(d) #if defined(M)  succeed
+(e) #if !defined(M) fail
