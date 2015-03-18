@@ -1,0 +1,19 @@
+We saw that writing #include <file> instead of #include "file" may not work if file is
+one that we've written. Would there be any problem with writing #include "file" instead of
+#include <file> if file is a system header?
+
+The second way will also work, the only difference is that it will search the current
+directory for that particular header file before searching the directory in which the
+system header files are. 
+
+This can be different though if you have a header file
+declared in your working directory that matches a header file in the system header files
+directory.
+
+E.g If you defined your own header file as stdbool.h then:
+
+#include "stdbool.h" will include your working directory version of stdbool.h
+
+however writing:
+
+#include <stdbool.h> will include the version residing in the system header files directory.
