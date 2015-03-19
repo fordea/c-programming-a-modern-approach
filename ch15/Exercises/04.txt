@@ -1,0 +1,74 @@
+Assume that debug.h is a header file with the following contents:
+
+#ifdef DEBUG
+#define PRINT_DEBUG(n) printf("Value of " #n ": %d\n", n)
+#else
+#define PRINT_DEBUG(n)
+#endif
+
+
+Let testdebug.c be the following source file:
+
+#include <stdio.h>
+
+#define DEBUG
+#include "debug.h"
+
+int main(void)
+{
+    int i = 1, j = 2, k = 3;
+
+#ifdef DEBUG
+    printf("Output if DEBUG is defined:\n");
+#else
+    printf("Output if DEBUG is not defined:\n");
+#endif
+
+    PRINT_DEBUG(i);
+    PRINT_DEBUG(j);
+    PRINT_DEBUG(k);
+    PRINT_DEBUG(i + j);
+    PRINT_DEBUG(2 * i + j - k);
+
+    return 0;
+}
+
+
+(a) What is the output when the program is executed?
+    Output if DEBUG is defined:
+    Value of " i ": 1
+    Value of " j ": 2
+    Value of " k ": 3
+    Value of " i + j ": 1
+    Value of " 2 * i + j - k ": 1
+
+(b) What is the output if the #define directive is removed from testdebug.c?
+    Output if DEBUG is not defined:
+
+(c) Explain why the output is different in parts (a) and (b).
+
+    First Scenario:
+    a) Preprocessor sees that DEBUG has been defined in testdebug.c 
+    b) Preprocessor gets to an #ifdef check in debug.h for the macro DEBUG, as it has already
+       been defined it creates the first PRINT_DEBUG macro.
+    c) Preprocessor gets to #ifdef check in main in testdebug.c. As DEBUG is already defined it
+       leaves the line printf("output if DEBUG is defined:\n"); and deletes the others.
+    d) Preprocessor encounters the various references to the PRINT_DEBUG macro, and replaces
+       the lines with the PRINT_DEBUG replacement list which is the line
+       prinf("Value of " ...);
+
+    Second Scenario:
+    a) Preprocessor gets to an #ifdef check in debug.h for the macro DEBUG. As it hasn't been
+       defined yet, it creates the macro PRINT_DEBUG(n).
+    b) Preprocessor gets to #ifdef check in main in testdebug.c. As DEBUG still hasn't been defined
+       it leaves the line printf("Output if DEBUG is not defined:\n"); and deletes the others.
+    c) Preprocess encounters the various references to the PRINT_DEBUG macro, and replaces
+       the lines with with PRINT_DEBUG replacement list, which is empty so it essentially
+       writes blank lines.
+
+(d) Is it necessary for the DEBUG macro to be defined before debug.h is included in order
+    for PRINT_DEBUG to have the desired effect?
+    Yes, as the preprocessor acts sequentially from top to bottom, we must ensure that DEBUG
+    is defined before it reaches the #ifdef check in debug.h. DEBUG can be declared in either
+    the source file before the #include "debug.h" directive, or in any other header file that 
+    is included in the source file before debug.h is included to get the desired effect.
