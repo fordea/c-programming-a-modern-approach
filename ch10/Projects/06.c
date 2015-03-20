@@ -12,13 +12,13 @@ int contents[STACK_SIZE], top = 0;
 
 int stack_overflow(void)
 {
-        printf("Expression is too complex");
+        printf("Expression is too complex\n");
         exit(EXIT_FAILURE);
 }
 
 int stack_underflow(void)
 {
-        printf("Not enough operands in expression");
+        printf("Not enough operands in expression\n");
         exit(EXIT_FAILURE);
 }
 
@@ -71,8 +71,10 @@ int main(void)
 
 /* processes a character to perform an operation on the stack 
  */
-void process_character(char ch) {
-
+void process_character(char ch)
+{
+    int operand1, operand2;
+    
     switch(ch) {
 
         case '0':   push(0); break;
@@ -89,13 +91,17 @@ void process_character(char ch) {
         case '+':   push(pop() + pop());
                     break;
 
-        case '-':   push(pop() - pop());
+        case '-':   operand2 = pop();
+                    operand1 = pop();
+                    push(operand1 - operand2);
                     break;
 
         case '*':   push(pop() * pop());
                     break;
 
-        case '/':   push(pop() / pop());
+        case '/':   operand2 = pop();
+                    operand1 = pop();
+                    push(operand1 / operand2);
                     break;
             
         case '=':   printf("Value of expression: %d\n", pop());
