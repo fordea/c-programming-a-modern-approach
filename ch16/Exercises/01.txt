@@ -1,0 +1,22 @@
+In the following declarations, the x and y structures have members named x and y:
+
+struct { int x, y; } x;
+struct { int x, y; } y;
+
+Are these declarations legal on an individual basis? Could both declarations appear as
+shown in a program?
+
+Both statements are legal on an individual basis, and together. All the variables declared
+within a struct have block scope, meaning the variables x and y inside struct x cannot see
+the variables x and y inside struct y. It's also fine for a variable inside a struct to share
+the same name as the struct itself, because the only way we can access that variable is by
+appending it to the struct name with a period.
+
+So in this example we can access the struct variables via:
+struct x:
+x.x
+x.y
+
+struct y:
+y.x
+y.y
