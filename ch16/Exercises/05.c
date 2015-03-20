@@ -35,31 +35,35 @@ int compare_dates(struct date d1, struct date d2)
 {
     int comparison;
 
-    if (d1.year > d2.year) { //Later Year
-        comparison = LATER;
-
-    } else if (d1.year < d2.year) { //Earlier Year
-        comparison = EARLIER; 
-
+    /* Compare Years */
+    if (d1.year > d2.year) {
+        comparison = LATER;             //d1 has a later year
+    } 
+    else if (d1.year < d2.year) {
+        comparison = EARLIER;           //d1 has an earlier year
     }
-    else { //Same Year
-        if (d1.month > d2.month) { //Later Month
-            comparison = LATER;
 
-        } else if (d1.month < d2.month) { //Earlier Month
-            comparison = EARLIER;
+    /*Compare Months */
+    else {
+        if (d1.month > d2.month) {
+            comparison = LATER;         //same year, but d1 month later
+        }
+        else if (d1.month < d2.month) {
+            comparison = EARLIER;       //same year, but d1 month earlier
+        }
 
-        } else { //Same Month
-              if (d1.day > d2.day) { //Later Day
-                  comparison = LATER;
-
-              } else if (d1.day < d2.day) { //Earlier Day
-                  comparison = EARLIER;
-
-              } else { //Same Day
-                  comparison = SAME;
-              }       
-          }
+        /* Compare Days */
+        else {
+            if (d1.day > d2.day) {
+                comparison = LATER;     //same year & month, but d1 day later
+            }
+            else if (d1.day < d2.day) {
+                comparison = EARLIER;   //same year & month, but d1 day earlier
+            }
+            else {
+                comparison = SAME;      //same year, month, and day
+            }       
+        }
     }
 
     return comparison;
