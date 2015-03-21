@@ -1,0 +1,13 @@
+Suppose that b and i are declared as follows:
+
+enum {FALSE, TRUE} b;
+int i;
+
+Which of the following statements are legal? Which ones are "safe" (always yield
+a meaningful result)?
+
+(a) b = FALSE;          Legal & Safe
+(b) b = i;              Legal & Unsafe, i could be outside the range of b's values
+(c) b++;                Legal & Unsafe, b could be increased outside the range of b's values
+(d) i = b;              Legal & Safe
+(e) i = 2 * b + 1;      Legal & Safe
