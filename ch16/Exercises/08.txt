@@ -1,0 +1,9 @@
+struct color {
+    int red;
+    int green;
+    int blue;
+};
+
+const struct color MAGENTA_A = {255, 0, 255};
+
+const struct color MAGENTA_B = {.red = 255, .blue = 255};:
