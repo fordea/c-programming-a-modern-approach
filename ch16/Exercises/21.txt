@@ -1,0 +1,14 @@
+What are the integer values of the enumeration constants in each of the following
+declarations?
+
+(a) enum {NUL, SOH, STX, ETX};
+    NUL is 0, SOH is 1, STX is 2, and ETX is 3.
+
+(b) enum {VT = 11, FF, CR};
+    VT is 11, FF is 12, and CR is 13.
+
+(c) enum {SO = 14, SI, DLE, CAN = 24, EM};
+    SO is 14, SI is 15, DLE is 16, CAN is 24, and EM is 25.
+
+(d) enum {ENQ = 45, ACK, BEL, LF = 37, ETB, ESC};
+    ENQ is 45, ACK is 46, BEL is 47, LF is 37, ETB is 38, and ESC is 39.
