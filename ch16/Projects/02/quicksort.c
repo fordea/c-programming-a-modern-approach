@@ -42,7 +42,6 @@ int split(struct part a[], int low, int high)
     if (low >= high) break;
     a[high--] = a[low];
   }
-  printf("%d: %s\n", part_element.number, part_element.name);
   a[high] = part_element;
   return high;
 }
