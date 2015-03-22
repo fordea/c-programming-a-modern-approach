@@ -1,11 +1,9 @@
 #include <stdio.h>
 
-struct dialing_code {
+const struct {
     char *country;
     int code;
-};
-
-const struct dialing_code country_codes[] =
+} country_codes[] =
     {{"Argentina",            54}, {"Bangladesh",     889},
      {"Brazil",               55}, {"Burma (Myanmar)", 95},
      {"China",                86}, {"Colombia",        57},
