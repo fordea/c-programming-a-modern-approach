@@ -42,7 +42,7 @@ int main(void)
       ;
     switch (code) {
       case 'i': insert(inventory, &num_parts);
-				organize_inventory(inventory, num_parts);
+                organize_inventory(inventory, num_parts);
                 break;
       case 's': search(inventory, num_parts);
                 break;
