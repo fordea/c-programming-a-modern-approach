@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 #define FEBRUARY 1
 
@@ -14,6 +15,12 @@ struct date {
 
 const int month_days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
+/*Returns true if leap year, else false */
+bool is_leap_year(int year)
+{
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
 /* Returns the day of year that corresponds to date d */
 int day_of_year(struct date d)
 {
@@ -21,9 +28,8 @@ int day_of_year(struct date d)
     for (month = 0; month < d.month - 1; month++) {
         total_days += month_days[month];
 
-        if (month == FEBRUARY)
-            if ((d.year % 4 == 0 && d.year % 100 != 0) || (d.year % 400 == 0))
-                total_days++;
+        if (month == FEBRUARY && is_leap_year(d.year))
+            total_days++;
     }
 
     return total_days;
@@ -36,34 +42,23 @@ int compare_dates(struct date d1, struct date d2)
     int comparison;
 
     /* Compare Years */
-    if (d1.year > d2.year) {
-        comparison = LATER;             //d1 has a later year
-    } 
-    else if (d1.year < d2.year) {
-        comparison = EARLIER;           //d1 has an earlier year
-    }
+    if (d1.year < d2.year)
+        comparison = EARLIER;
+    else if (d1.year < d2.year)
+        comparison = LATER;
 
-    /*Compare Months */
+    /*Years are the same so compare num days in year */
     else {
-        if (d1.month > d2.month) {
-            comparison = LATER;         //same year, but d1 month later
-        }
-        else if (d1.month < d2.month) {
-            comparison = EARLIER;       //same year, but d1 month earlier
-        }
+        int d1_days = day_of_year(d1);
+        int d2_days = day_of_year(d2);
 
-        /* Compare Days */
-        else {
-            if (d1.day > d2.day) {
-                comparison = LATER;     //same year & month, but d1 day later
-            }
-            else if (d1.day < d2.day) {
-                comparison = EARLIER;   //same year & month, but d1 day earlier
-            }
-            else {
-                comparison = SAME;      //same year, month, and day
-            }       
-        }
+        if (d1_days > d2_days)
+            comparison = EARLIER;
+        else if (d1_days < d2_days)
+            comparison = LATER;
+        else
+            comparison = SAME;
+
     }
 
     return comparison;
