@@ -1,0 +1,16 @@
+Suppose that f and p are declared as follows:
+
+struct {
+    union {
+        char a, b;
+        int c;
+    } d;
+    int e[5];
+} f, *p = &f;
+
+Which of the following statements are legal?
+
+(a) p->b = ' '; Illegal. To access b we must use p->d.b = ' ';
+(b) p->e[3] = 10;  Legal.
+(c) (*p).d.a = '*'; Legal.
+(d) (d) p->d->c = 20; Illegal. d isn't a pointer. we must use p->d.c = 20;
