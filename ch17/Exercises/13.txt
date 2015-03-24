@@ -1,0 +1,64 @@
+The following function is supposed to insert a new node into its proper place
+in an ordered list, returning a pointer to the first node in the modified list.
+Unforunately, the function doesn't work corectly in all cases. Explain what's
+wrong with it and show how to fix it. Assume that the node structure is the
+one defined in section 17.5.
+
+struct node *insert_into_ordered_list(struct node *list, struct node *new_node)
+{
+    struct node *cur = list, *prev = NULL;
+    while (cur->value <= new_node->value) {
+        prev = cur;
+        cur = cur->next;
+    }
+    prev->next = new_node;
+    new_node->next = cur;
+    return list;
+}
+
+The problem with this function is that it doesn't deal with two situations:
+When either cur is null (empty list) or prev is null (first node in list).
+
+We can fix this in two ways. Firstly by accounting for these special cases,
+or by using a pointer to a pointer to list.
+
+Special cases version:
+
+struct node *insert_into_ordered_list(struct node *list, struct node *new_node)
+{
+    struct node *cur = list, *prev = NULL;
+    for (; cur; prev = cur; cur = cur->next) {
+        if (cur->value > new_node->value)
+            break;  /* Break when we've found the node thats greater than new_node */
+    }
+    if (list == NULL) {
+        return new_node;        /* Case where list is empty */
+    }
+    else if (prev == NULL) {
+        list->next = new_node;
+        new_node->next = cur;   /* Case where inserting before first node */
+    }
+    else {
+        prev->next = new_node;
+        new_node->next = cur;   /* All other cases */
+    }
+
+    return list;
+}
+
+Pointer to pointer version:
+
+struct node *insert_into_ordered_list(struct node *list, struct node *new_node)
+{
+    struct node **pp = &list;
+
+    while (list) {
+        if (list->value >= new_node->value)
+            break;
+        pp = &list->next;
+        list = list->next;
+    }
+    *pp = new_node;
+    new_node->next = list; 
+
+}
