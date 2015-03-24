@@ -1,0 +1,60 @@
+Show the output of the following program and explain what it does.
+
+#include <stdio.h>
+
+int f1(int (*f)(int));
+int f2(int i);
+
+int main(void)
+{
+    printf("Answer: %d\n", f1(f2));
+    return 0;
+}
+
+int f1(int (*f)(int))
+{
+    int n = 0;
+
+    while ((*f)(n)) n++;
+    return n;
+
+}
+
+int f2(int i)
+{
+    return i * i + i - 12;
+}
+
+
+f1 is a function declaration with one argument: a pointer to a function with one
+int argument that returns an int.
+
+f2 is a function declaration with one int argument, with return type int.
+
+main calls the f1 function, providing it with the address of function f2
+(As f2 is equivalent to writing &f2).
+
+function f1 contains a while loop that will keep calling the function
+pointed to by the parameter with increments of 1, until that function returns 
+0 (As a boolean expression treats any non-zero value as true, and 0 as false)
+
+the first call of f2 is provided the value 0. As it returns 0 * 0 + 0 - 12,
+the value returned to f1 is -12.
+
+As the value returned to f1 is -12, the while loop condition is still true, so
+n is incremented by 1. f2 is now called with the value 1:
+1 * 1 + 1 - 12.
+
+As the value returned to f1 is -10, the while loop condition is still true, so
+n is incremented by 1. f2 is now called with the value 2:
+2 * 2 + 2 - 12.
+
+As the value returned to f1 is -6, the while loop condition is still true, so
+n is incremented by 1. f2 is now called with the value 3:
+3 * 3 + 3 - 12
+
+As the value returnd to f1 is 0, the while loop condition is now false. The
+while loop terminates and n (3) is returned to main by f1.
+
+The final output of the program is:
+Answer: 3
