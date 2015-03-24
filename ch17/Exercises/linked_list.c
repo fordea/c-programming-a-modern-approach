@@ -6,31 +6,32 @@ struct node {
     struct node *next;
 }; 
 
-struct node *add_to_list(struct node *list, int n);
-struct node *delete_from_list(struct node *list, int n);
-struct node *search_list(struct node *list, int n);
+void *add_to_list(struct node **pp, int n);
+void *delete_from_list(struct node **pp, int n);
+struct node *search_list(struct node *p, int n);
+int list_size(struct node *p);
 
-struct node *head = NULL;
-int size = 0;
 
 int main(void)
 {
-    printf("size of list: %d\n", size);
-    head = add_to_list(head, 25);
-    printf("size of list: %d\n", size);
-    head = add_to_list(head, 13);
-    printf("size of list: %d\n", size);
+    struct node *head = NULL;
+
+    add_to_list(&head, 25);
+    add_to_list(&head, 13);
+    printf("Number of nodes in list: %d\n", list_size(head));
 
     printf("%s\n", search_list(head, 12) ? "Found Node." : "Node not found.");
     printf("%s\n", search_list(head, 25) ? "Found Node." : "Node not found.");
 
-    head = delete_from_list(head, 25);
-    printf("size of list: %d\n", size);
+    delete_from_list(&head, 25);
+    printf("Number of nodes in list: %d\n", list_size(head));
 
     return 0;
 }
 
-struct node *add_to_list(struct node *head, int n)
+/* Adds a node to the linked list, Argument pp is a pointer to a pointer
+ * to the first node in the list, n is the value of the node to add */
+void *add_to_list(struct node **pp, int n)
 {
     struct node *new_node;
 
@@ -40,41 +41,48 @@ struct node *add_to_list(struct node *head, int n)
     }
 
     new_node->value = n;
-    new_node->next = head;
-    size++;
-    return new_node;
+    new_node->next = *pp;
+    *pp = new_node;
 }
 
-struct node *delete_from_list(struct node *head, int n)
+/* Delete a node from the linked list. Argument pp is a pointer to a pointer
+ * to the first node in the list, n is the value of the node(s) to delete */
+void *delete_from_list(struct node **pp, int n)
 {
-    struct node *cur, *prev;
+    struct node *entry = *pp;
 
-    for (cur = head, prev = NULL;
-         cur != NULL && cur->value != n; 
-         prev = cur, cur = cur->next)
-        ;
-
-    if (cur == NULL) {
-        return head;                /* n is not in list */
+    while (entry) {
+        if (entry->value == n) {
+            *pp = entry->next;
+            free(entry);
+        }
+        pp = &entry->next;
+        entry = entry->next;
     }
-    else if (prev == NULL) {
-        head = head->next;          /* n is first item in list */
-        size--;
-    }
-    else {
-        prev->next = cur->next;     /* n is some other item in list */
-        size--;
-    }
-
-    free(cur);    
-    return head;
 }
 
-struct node *search_list(struct node *head, int n)
+/* Search for a node in the linked list. Argument p is a pointer to the 
+ * first node in the list, int n is the value of the node to find 
+ * Returns the first node with the matching value that it finds */
+struct node *search_list(struct node *p, int n)
 {
-    struct node *node = head;
+    struct node *node = p;
 
     while (node != NULL && node->value != n)
         node = node->next;
     return node;
+}
+
+/* Returns the number of nodes in the linked list. Argument p is
+ * a pointer to the first node in the list */
+int list_size(struct node *p)
+{
+    int count = 0;
+    while (p != NULL) {
+        count ++;
+        if (p->next == NULL)
+            return count;
+        p = p->next;
+    }
+    return count;
 }
