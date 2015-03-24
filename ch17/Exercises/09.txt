@@ -1,0 +1,11 @@
+True or false: If x is a structure and a is a member of that structure, then
+(&x)->a is the same as x.a.
+
+True
+
+&x is the address of the structure x, so it's a pointer to x. To get a value
+from a pointer to a structure we can either do (*(&x)).a or we can use the
+structure member operator -> (&x)->a. We must use parentheses around &x
+because -> has higher precedence than &. If we didn't specify parentheses it
+would be evaluated as follows: &(x->a) which is illegal because x is a structure,
+not a pointer to a structure.
