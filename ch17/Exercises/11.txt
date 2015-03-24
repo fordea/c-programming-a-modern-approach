@@ -1,0 +1,19 @@
+Write the following function:
+
+int count_occurrences(struct node *list, int n);
+
+The list parameter points to a linked list; the function should return the
+number of times n appears in this list. Assume the node structure is the one
+defined in section 17.5.
+
+int count_occurrences(struct node *list, int n)
+{
+    int total = 0;
+
+    while (list) {
+        if (list->value == n)
+            total++;
+        list = list->next;
+    }
+    return total;
+}
