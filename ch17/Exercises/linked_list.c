@@ -111,13 +111,21 @@ int list_size(struct node *p)
 /* Removes all nodes in the linked list */
 void clear_list(struct node **pp)
 {
-    struct node *temp;
-
+    /* Either way works */
+    struct node *next_node;
     while (*pp) {
-        temp = (*pp)->next;
-        *pp = (*pp)->next;
-        free(temp);
+        next_node = (*pp)->next;
+        free(*pp);
+        *pp = next_node;
     }
+
+    /* struct node *temp; */
+
+    /* while (*pp) { */
+    /*     temp = (*pp)->next; */
+    /*     *pp = (*pp)->next; */
+    /*     free(temp); */
+    /* } */
 }
 
 /* Inserts a node into list in numerical order by value */
