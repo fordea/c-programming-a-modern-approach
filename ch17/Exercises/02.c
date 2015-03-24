@@ -6,7 +6,7 @@ void *duplicate(char * str)
 {
     char *duped_str;
 
-    if ((duped_str = malloc(strlen(str))) == NULL) {
+    if ((duped_str = malloc(strlen(str) + 1)) == NULL) {
         printf("Error: malloc failed");
         exit(EXIT_FAILURE);
     }
