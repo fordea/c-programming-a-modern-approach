@@ -9,9 +9,11 @@ The problem is that we are freeing the memory allocated to p, and then attemptin
 to call p = p->next. Since p is a dangling pointer after deallocation its
 behaviour is undefined. 
 
-To fix this we can use an additional pointer and copy the p pointer to it. We
-can then change p to point to the next node, and finally free the memory by
-calling free on the temp pointer:
+We can fix this in two ways:
+
+Firstly we can use create a temp pointer, giving it the value p.
+We can then advance p to the next node, and finally free the memory that temp
+points to as p no longer points there:
 
 struct node *temp;
 
@@ -19,4 +21,16 @@ while (p != NULL) {
     temp = p;
     p = p->next;
     free(temp);
+}
+
+A second way we can do this is to use a next_node pointer, giving it the value
+p->next. We can then free the memory pointed to by p, and afterwards assign
+p the next_node pointer so that it points to the next node:
+
+struct node *next_node;
+
+while (p != NULL) {
+    next_node = p->next;
+    free(p);
+    p = next_node;
 }
