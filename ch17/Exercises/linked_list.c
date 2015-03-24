@@ -11,23 +11,37 @@ void *delete_from_list(struct node **pp, int n);
 struct node *search_list(struct node *p, int n);
 int list_size(struct node *p);
 void clear_list(struct node **pp);
+void *insert_into_ordered_list(struct node **pp, int value);
+void print_node_values(struct node *p);
 
 
 int main(void)
 {
     struct node *head = NULL;
 
-    add_to_list(&head, 25);
-    add_to_list(&head, 13);
-    add_to_list(&head, 38);
-    add_to_list(&head, 23);
-    add_to_list(&head, 30);
-    printf("Number of nodes in list: %d\n", list_size(head));
+    add_to_list(&head, 1);
+    add_to_list(&head, 2);
+    add_to_list(&head, 3);
+    add_to_list(&head, 4);
+    add_to_list(&head, 5);
+    print_node_values(head);
+    clear_list(&head);
+    printf("\n");
 
-    printf("%s\n", search_list(head, 12) ? "Found Node." : "Node not found.");
-    printf("%s\n", search_list(head, 25) ? "Found Node." : "Node not found.");
+    insert_into_ordered_list(&head, 1);
+    insert_into_ordered_list(&head, 2);
+    insert_into_ordered_list(&head, 3);
+    insert_into_ordered_list(&head, 4);
+    insert_into_ordered_list(&head, 5);
+    print_node_values(head);
+    delete_from_list(&head, 4);
+    printf("\n");
+    print_node_values(head);
+    printf("\n");
 
-    delete_from_list(&head, 38);
+    printf("%s\n", search_list(head, 2) ? "Found Node." : "Node not found.");
+    printf("%s\n", search_list(head, 4) ? "Found Node." : "Node not found.");
+
     printf("Number of nodes in list: %d\n", list_size(head));
 
     clear_list(&head);
@@ -93,13 +107,49 @@ int list_size(struct node *p)
     }
     return count;
 }
+
+/* Removes all nodes in the linked list */
 void clear_list(struct node **pp)
 {
-    struct node *next_node;
+    struct node *temp;
 
-    while (*pp != NULL) {
-        next_node = (*pp)->next;
-        free(*pp);
-        *pp = next_node;
+    while (*pp) {
+        temp = (*pp)->next;
+        *pp = (*pp)->next;
+        free(temp);
+    }
+}
+
+/* Inserts a node into list in numerical order by value */
+void *insert_into_ordered_list(struct node **pp, int value)
+{
+    struct node *entry = *pp;
+    struct node *new_node;
+
+    while (entry) {
+        if (entry->value >= value) {
+            break;
+        }
+        pp = &entry->next;
+        entry = entry->next;
+    }
+
+    if ((new_node = malloc(sizeof(struct node))) == NULL) {
+        printf("Error, malloc in insert_into_ordered_list\n");
+        exit(EXIT_FAILURE);
+    }
+    new_node->next = entry; 
+    new_node->value = value;
+    *pp = new_node;
+}
+
+/* Prints all the nodes and their values in the list */
+void print_node_values(struct node *p)
+{
+    int count = 0;
+    while (p) {
+        count++;
+        printf("Node %d: %d\n", count, p->value);
+        p = p->next;
     }
 }
