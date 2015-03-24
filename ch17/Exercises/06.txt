@@ -1,0 +1,16 @@
+Modify the delete_fromt_list function so that it only uses one pointer variable
+instead of two.
+
+void *delete_from_list(struct node **pp, int n)
+{
+    struct node entry = *pp;
+
+    while (entry) {
+        if (entry->value == n) {
+            *pp = entry->next;
+            free(entry);
+        }
+        pp = &entry->next;
+        entry = entry->next;
+    }
+}
