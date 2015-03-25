@@ -110,12 +110,11 @@ int list_size(void)
 /* linked list */
 void clear_list(void)
 {
-    struct node **pp = &head;
     struct node *temp;
 
-    while (*pp) {
-        temp = *pp;
-        *pp = (*pp)->next;
+    while (head) {
+        temp = head;
+        head = head->next;
         free(temp);
     }
 }
