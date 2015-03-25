@@ -15,7 +15,6 @@
 #include "readline.h"
 
 #define NAME_LEN 25
-/* #define MAX_PARTS 100 */
 
 struct part {
   int number;
@@ -23,8 +22,6 @@ struct part {
   int on_hand;
   struct part *next;
 } *inventory = NULL;
-
-int num_parts = 0;   /* number of parts currently stored */
 
 struct part *find_part(int number);
 void insert(void);
@@ -76,14 +73,11 @@ int main(void)
 struct part *find_part(int number)
 {
   int i;
+  struct part *entry;
 
-  struct part *entry = inventory;
-
-  while (entry) {
+  for (entry = inventory; entry; entry = entry->next)
       if (entry->number == number)
           return entry;
-      entry = entry->next;
-  }
   return NULL;
 }
 
@@ -114,12 +108,12 @@ void insert(void)
   read_line(new_part->name, NAME_LEN);
   printf("Enter quantity on hand: ");
   scanf("%d", &(new_part->on_hand));
-  num_parts++;
 
+  /* Inserts the new part in the inventory, ordered by part number */
   struct part **pp = &inventory;
   struct part *entry = *pp;
   while (entry) {
-      if (entry->number >= part_number) {
+      if (entry->number > part_number) {
           break;
       }
       pp = &entry->next;
@@ -171,7 +165,7 @@ void update(void)
     printf("Part not found.\n");
 }
 
-/* Erases an item from the inventory */
+/* Erases a part from the inventory */
 void erase(void)
 {
     int part_number;
