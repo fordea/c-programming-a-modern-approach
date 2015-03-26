@@ -94,7 +94,7 @@ void flush_line(void)
         struct node *entry = line;
         int i;
         for (i = 0, entry = line; entry; i++, entry = entry->next) {
-            if (i > 0)
+            if (i > 0 && entry->next != NULL)
                 putchar(' ');
             printf("%s ", entry->word_str);
         }
