@@ -1,0 +1,23 @@
+The following function is supposed to print an error message. Each message is preceded by
+an integer, indicating the number of times the function has been called. Unfortunately, the
+function always display 1 as the number of the error message. Locate the error and show how
+to fix it without making any changes outside the function.
+
+void print_error(const char *message)
+{
+    int n = 1;
+    printf("Error %d: %s\n", n++, message);
+}
+
+The error with the function is that the variable n has automatic storage duration.
+As it hasn't been provided with a storage class, and it is local to a function
+it is by default given the auto storage class. This means that a new copy of n
+is initialized each time the function is called. To fix this error, we need to
+change n's storage class to static, so that the variable can be reused for
+successive function calls.
+
+void print_error(const char *message)
+{
+    static int n = 1;
+    printf("Error %d: %s\n", n++, message);
+}

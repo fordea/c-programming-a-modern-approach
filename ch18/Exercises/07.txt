@@ -1,0 +1,20 @@
+Suppose that we declare x to be a const object. Which one of the following
+statements about x is false?
+
+(a) If x is of type int, it can be used as the value of a case label in a which
+    statement.
+    False. A const variable cannot be used in constant expressions.
+    As a switch statement requires a constant expression, we can't use a const int.
+
+(b) The compiler will check that no assignment is made to x.
+    True - A const variable is read-only and the compiler will ensure that
+    no attempts are made to assign it a new value.
+
+(c) x is subject to the same scope rules as variables.
+    True. The only way to change the scope rules of a variable is by changing
+    the place in a file in which it is declared, not by changing the type
+    qualifier(s) it is given.
+
+(d) x can be of any type.
+    True. The type qualifier const doesn't limit the type specifiers that can
+    be given to a variable.
