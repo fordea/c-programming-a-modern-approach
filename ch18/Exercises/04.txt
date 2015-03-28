@@ -1,0 +1,13 @@
+Let f be the following function. What will be the value of f(10) if f has
+never been called before? What will be the value of f(10) if f has been called
+five times previously?
+
+int f(int i)
+{
+    static int j = 0;
+    return i * j++;
+}
+
+Value of f(10) (Never called before): 0
+
+Value of f(10) (Called five times before): 50
