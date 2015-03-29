@@ -23,7 +23,7 @@ following declarations.
     to a function with one int argument
     that returns a pointer to a float
 
-(d) void (*x(int, voidd *y)(int))) (int);
+(d) void (*x(int, void *y)(int))) (int);
     x is a function
     with two arguments: int and a pointer to a function with one int argument with return type void.
     that returns a pointer to
