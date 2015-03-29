@@ -5,7 +5,7 @@ following declarations.
     x is an
     array with size 10 of
     pointers to
-    functions with one int parameter
+    functions with one int argument
     with the return type char
 
 (b) int (*x(int))[5];
@@ -18,14 +18,14 @@ following declarations.
 
 (c) float *(*x(void))(int)
     x is a function
-    with no parameters
+    with no arguments
     that returns a pointer
-    to a function with no parameters
+    to a function with one int argument
     that returns a pointer to a float
 
 (d) void (*x(int, voidd *y)(int))) (int);
     x is a function
-    with two parameters: int and a pointer to a function with one int parameter with return type void.
+    with two arguments: int and a pointer to a function with one int argument with return type void.
     that returns a pointer to
-    a function that takes one int parameter
+    a function that takes one int argument
     with return type void

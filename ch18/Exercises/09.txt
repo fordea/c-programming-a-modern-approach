@@ -1,0 +1,28 @@
+Use a series of type definitions to simply each of the declarations
+in Exercise 8.
+
+(a) char (*x[10])(int);
+
+    typedef char Fcn(int);
+    typedef Fcn *Fcn_ptr;
+    typedef Fcn_ptr Fcn_ptr_array[10]
+    Fcn_ptr_array x;
+
+(b) int (*x(int))[5];
+
+    typedef int Arr[5];
+    typedef Arr Fcn(int)
+    Fcn *x;
+
+(c) float *(*x(void))(int);
+
+    typedef float *Outer_Fcn(int);
+    typedef Outer_Fcn *Inner_fcn(void);
+    Inner_Fcn x;
+
+(d) void (*x(int, void (*y)(int)))(int);
+
+    typedef void Outer_Fcn(int);
+    typedef void *Arg_Fcn(int);
+    typedef Outer_Fcn *Inner_fcn(int, Arg_Fcn);
+    Outer_Fcn x;
