@@ -29,5 +29,5 @@
         return (int) f;
     }
 
-    int (*fcn_ptr)(double) result = f(long_to_float, &c);
+    int (*fcn_ptr)(double) = f(long_to_float, &c);
     int result = fcn_ptr(d);
