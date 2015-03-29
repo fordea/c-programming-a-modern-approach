@@ -1,0 +1,33 @@
+(a) Write a complete description of the type of the function f, assuming
+    that it's declared as follows:
+
+    int (*f(float (*)(long), char*))(double);
+
+    f is a
+    function with two arguments
+        first argument being a pointer to a function with a long argument returning a float
+        second argument being a pointer to char
+    that returns a pointer to
+    a function with one double argument
+    returning an int.
+
+(b) Give an example showing how f would be called.
+
+
+    char c = 'A';
+    double d = 3.5;
+
+    float long_to_float(long n)
+    {
+        return (float) n / 1.0f;
+    }
+
+    int (*f(float (*fp)(long), char *p))(double d)
+    {
+        *p = *p * d;
+        float f = fp((long)*p);
+        return (int) f;
+    }
+
+    int (*fcn_ptr)(double) result = f(long_to_float, &c);
+    int result = fcn_ptr(d);
