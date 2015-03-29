@@ -2,7 +2,7 @@ Describe some advantages and disadvantages of diving a program into multiple sou
 
 (a) Advantages
 
-    (i) By splitting up a program into multiple source files, we can mimic encapsulation
+    (i) By splitting up a program into multiple source files, we can perform information hiding
         by only listing function prototypes in header files that we want other classes to use.
         This allows us to create functions in source files that are essentially hidden from the
         other source files because their prototype doesn't exist outside the source file.
@@ -21,7 +21,7 @@ Describe some advantages and disadvantages of diving a program into multiple sou
 
 
 (b) Disadvantages
-    
+
     (i) Small programs that can logically be written in a single file can have unneccessary
         complexity if written in multiple source files for the sake of having multiple
         source files.
@@ -30,4 +30,3 @@ Describe some advantages and disadvantages of diving a program into multiple sou
         A program split into various source files without adhering to grouping of
         related functionality can cause confusion as the structure wouldn't follow some
         logical reasoning.
-        
