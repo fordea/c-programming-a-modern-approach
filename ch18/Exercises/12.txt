@@ -13,21 +13,27 @@
 
 (b) Give an example showing how f would be called.
 
-
-    char c = 'A';
-    double d = 3.5;
-
-    float long_to_float(long n)
+    float function1(long n)
     {
-        return (float) n / 1.0f;
+        return (float) n + 2.3f;
+    }
+
+    int function2(double d)
+    {
+        return (int) d * 5;
     }
 
     int (*f(float (*fp)(long), char *p))(double d)
     {
-        *p = *p * d;
-        float f = fp((long)*p);
-        return (int) f;
+        *p = *p - fp(5);
+        return function2;
     }
 
-    int (*fcn_ptr)(double) = f(long_to_float, &c);
-    int result = fcn_ptr(d);
+    int main(void)
+    {
+        char c = 'A';
+        double d = 3.5;
+
+        int n = (f(function1, &c))(d);
+        printf("%c, %d\n", c, n);
+    }
