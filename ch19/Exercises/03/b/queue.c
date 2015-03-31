@@ -7,34 +7,34 @@
 
 PRIVATE void queue_underflow(void);
 
-PRIVATE struct contents {
+PRIVATE struct node {
     Item item;
-    struct contents *next;
+    struct node *next;
 } *head = NULL, *tail = NULL;
 
 PRIVATE int num_items = 0;
 
 PUBLIC void enqueue(Item i)
 {
-    struct contents *new_item;
-    if ((new_item = malloc(sizeof (struct contents))) == NULL)
+    struct node *new_node;
+    if ((new_node = malloc(sizeof(struct node))) == NULL)
     {
         printf("Error, malloc failed in enqueue.\n");
         exit(EXIT_FAILURE);
     }
 
-    new_item->item = i;
-    new_item->next = NULL;
+    new_node->item = i;
+    new_node->next = NULL;
     num_items++;
 
     if (head == NULL)
     {
-        head = tail = new_item;
+        head = tail = new_node;
     }
     else
     {
-        tail->next = new_item;
-        tail = new_item;
+        tail->next = new_node;
+        tail = new_node;
     }
 }
 
@@ -42,7 +42,7 @@ PUBLIC Item dequeue(void)
 {
     if (!is_empty())
     {
-        struct contents *temp = head;
+        struct node *temp = head;
         Item i = head->item;
         head = head->next;
         free(temp);
