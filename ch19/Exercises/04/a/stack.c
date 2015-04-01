@@ -7,14 +7,14 @@
 
 static void terminate(char *message);
 
-struct node {
+struct stack_type {
     int contents[MAX];
     int top;
 };
 
-Stack create()
+Stack create(void)
 {
-    Stack s = malloc(sizeof(Stack));
+    Stack s = malloc(sizeof(struct stack_type));
     if (s == NULL)
     {
         printf("Error, malloc failed.\n");
@@ -22,6 +22,11 @@ Stack create()
     }
     s->top = 0;
     return s;
+}
+
+void destroy(Stack s)
+{
+    free(s);
 }
 
 void make_empty(Stack s)
@@ -43,16 +48,14 @@ void push(Stack s, Item i)
 {
     if (is_full(s))
         terminate("Error, stack overflow.");
-    else
-        s->contents[s->top++] = i;
+    s->contents[s->top++] = i;
 }
 
 Item pop(Stack s)
 {
     if (is_empty(s))
         terminate("Error, stack underflow.");
-    else
-        return s->contents[--s->top];
+    return s->contents[--s->top];
 }
 
 static void terminate(char *message)
