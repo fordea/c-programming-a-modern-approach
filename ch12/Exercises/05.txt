@@ -3,12 +3,10 @@ assignment p = a has just been performed, which of the following expessions are 
 because of mismatched types? Of the remaining expressions, which are true (have a nonzero
 value)?
 
-(a) p == a[0] Illegal - pointer to &a[0] compared to whats stored in a[0]
-(b) p == &a[0] - Legal - pointer to &a[0] compared to &a[0]
-(c) *p == a[0] - Legal - Dereferenced pointer to &a[0] which is a[0] compared to a[0]
-(d) p[0] == a[0] Legal - p[0] is treated as *(p + 0) which is equivalent to a[0]
+(a) p == a[0]  Illegal - &a[0] compared to a[0]
+(b) p == &a[0] - Legal - &a[0] compared to &a[0]
+(c) *p == a[0] - Legal - *&a[0] (which is equivalent to a[0]) compared to a[0]
+(d) p[0] == a[0] Legal - *(p + 0) compared to a[0]
 
 (b), (c) and (d) are true because when p is assigned to a, it points to the first element
 in a (a[0]).
-
-
