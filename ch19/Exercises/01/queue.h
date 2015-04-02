@@ -3,6 +3,7 @@
 
 #include <stdbool.h>
 
+typedef int Item;
 typedef struct queue_type *Queue;
 
 /* Appends Item i to the end of the queue */
