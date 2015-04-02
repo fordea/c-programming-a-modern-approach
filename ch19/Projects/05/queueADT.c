@@ -29,43 +29,39 @@ Queue create(void)
 
 void destroy(Queue q)
 {
-    empty_queue(q);
+    /* empty_queue(q); */
     free(q);
 }
 
 void enqueue(Queue q, Item i)
 {
-    if (!is_full(q))
-    {
-        q->contents[q->next++] = i;
-        q->len++;
-    }
+    if (is_full(q))
+        terminate("Error, queue is full.\n");
+    q->contents[q->next++] = i;
+    q->len++;
 }
 
 Item dequeue(Queue q)
 {
-    if (!is_empty(q))
-    {
-        Item i = q->contents[q->first++];
-        q->len--;
-        return i;
-    }
+    if (is_empty(q))
+        terminate("Error, queue is empty.\n");
+    Item i = q->contents[q->first++];
+    q->len--;
+    return i;
 }
 
 Item peek_front(Queue q)
 {
-    if (!is_empty(q))
-    {
-        return q->contents[q->first];
-    }
+    if (is_empty(q))
+        terminate("Error, queue is empty.\n");
+    return q->contents[q->first];
 }
 
 Item peek_end(Queue q)
 {
-    if (!is_empty(q))
-    {
-        return q->contents[q->next - 1];
-    }
+    if (is_empty(q))
+        terminate("Error, queue is empty.\n");
+    return q->contents[q->next - 1];
 }
 
 bool is_empty(Queue q)
