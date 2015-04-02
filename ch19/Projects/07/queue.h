@@ -6,7 +6,7 @@
 typedef int Item;
 typedef struct queue_type *Queue;
 
-/* Creates and returns a Queue of size n */
+/* Creates and returns a Queue */
 Queue create(void);
 
 /* Destroys the Queue q */
