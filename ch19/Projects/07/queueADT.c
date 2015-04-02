@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "queue.h"
 
-static void terminate(char *message);
+static void terminate(const char *message);
 
 struct node {
     Item value;
@@ -78,26 +78,26 @@ Item dequeue(Queue q)
     return i;
 }
 
-Item peek_front(Queue q)
+Item peek_front(const Queue q)
 {
     if (is_empty(q))
         terminate("Error, queue is empty.\n");
     return q->first->value;
 }
 
-Item peek_end(Queue q)
+Item peek_end(const Queue q)
 {
     if (is_empty(q))
         terminate("Error, queue is empty.\n");
     return q->last->value;
 }
 
-bool is_empty(Queue q)
+bool is_empty(const Queue q)
 {
     return q->len == 0;
 }
 
-bool is_full(Queue q)
+bool is_full(const Queue q)
 {
     return false;
 }
@@ -110,7 +110,7 @@ void empty_queue(Queue q)
     }
 }
 
-static void terminate(char *message)
+static void terminate(const char *message)
 {
     printf("%s\n", message);
     exit(EXIT_FAILURE);
