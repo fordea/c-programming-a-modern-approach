@@ -1,0 +1,72 @@
+Show the output produced by each of the following program fragments. Assume that i, j, and k
+are unsigned short variables.
+
+(a) i = 8; j = 9;
+    printf("%d", i >> 1 + j >> 1);
+
+    ((i >> (1 + j)) >> 1)
+    ((i >> 10) >> 1)
+    8 (decimal) in binary is 1000
+    shift 1000 right by 10 bits: 0000000000
+    (0 >> 1)
+    shift 0000000000 right by 1 bit: 0000000000
+    Program prints a decimal (%d) with the value: 0
+
+(b) i = 1;
+    printf("%d", i & ~j);
+
+    (i & (~j))
+    j is currently 9 in decimal, which is 1001 in binary.
+    1001's complement is 0110.
+    0110 (binary) in decimal is 6.
+    (i & 6)
+    i is currently 1 in decimal, which is 1 in binary
+
+    0001
+        &
+    0110
+        =
+    0000
+
+    Program prints a decimal (%d) with the value: 0
+
+
+(c) i = 2; j = 1; k = 0:
+    printf("%d", ~j & j ^ k);
+
+    (((~j) & j) ^ k)
+    j is currently 1 in decimal, which is 1 in binary.
+    1's completement is 0.
+    ((0 & j) ^ k)
+    j is currently 1 in decimal, which is 1 in binary.
+    0 & 1 is 0
+    (0 ^ k)
+    k is currently 0 in decimal, which is 0 in binary.
+    0 ^ 0 is 0
+    Program prints a decimal (%d) with the value: 0
+
+
+(d) i = 7; j = 8; k = 9;
+    printf("%d", i ^ j & k);
+
+    (i ^ (j & k));
+    j is currently 8 in decimal, which is 1000 in binary.
+    k is currently 9 in decimal, which is 1001 in binary.
+
+    1000
+        &
+    1001
+        =
+    1000, which is 8 in decimal
+
+    (i ^ 8)
+    i is currently 7 in decimal, which is 0111 in binary.
+    8 is 1000 in binary.
+
+    0111
+        ^
+    1000
+        =
+    1111, which is 15 in decimal
+
+    Program prints a decimal (%d) with the value: 15
