@@ -1,0 +1,46 @@
+Describe a simple way to "toggle" a bit (change it from 0 to 1 or from 1 to 0). Illustrate
+the technique by writing a statement that toggles bit 4 of the variable i.
+
+To toggle a bit at position n, we first need to create a mask that represents
+a bit sequence in which only the bit we want to flip is set to 1.
+We can either figure out what hexadecimal/decimal/octal number that the particular
+mask represents, or we can more simply just shift a '1' value n bits to the left
+to create the mask.
+
+For instance if we wanted to toggle bit 4 in a number, then the mask will have to be
+a value representing 10000 in binary. As this bit pattern is small it's easy to figure out that we can
+represent this as 0x10 in hexadecimal, 16 in decimal, or 020 in octal. However a
+simpler way is to shift the value 1 left by 4 bits: 1 << 4. This will shift the value
+1 (which is represented as a single 1 bit) 4 places to the left, inserting 4 zeroes after
+it. This method is a big help if we need a mask with a large number of bits.
+
+Now that we have the knowledge to make our mask, it's a simple matter of using
+the exclusive or (^) operator on the value whos bit we wish to toggle, and the mask.
+
+Lets use an example of flipping bit 4 in the int variable i representing 232 (decimal).
+
+232 (decimal) in binary is: 11101000.
+
+our mask: (1 << 4) is: 10000 (binary)
+
+11101000 (232 in decimal)
+        ^
+00010000 (16 in decimal)
+        =
+11111000 (248 in decimal)
+
+To set the variable i to a new value with the 4th bit toggled we could write
+an assignment statement in numerous ways:
+
+int i = 232;
+
+i ^= 1 << 4; (shifted bit mask)
+
+i ^= 0x10; (hexadecimal constant expression)
+
+i ^= 16; (decimal constant expression)
+
+i ^= 020 (octal constant expression);
+
+As we can see it's much easier to just shift a decimal 1 value left by n places to
+create a mask to toggle the nth bit.
