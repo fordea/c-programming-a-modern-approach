@@ -1,0 +1,36 @@
+Explain what effect the following macro has on its arguments. You may assume
+that the arguments have the same type.
+
+#define M(x,y) ((x)^=(y), (y)^=(x), (x)^=(y))
+This macro swaps two values stored in x and y using three exlusive or operations
+
+For instance lets say we have two variables x and y with the following values:
+x = 23 (decimal), 10111 (binary)
+y = 12 (decimal), 01100 (binary)
+
+
+x = x ^ y:
+10111
+     ^
+01100
+     =
+11011, x is now 11011 (27 in decimal)
+
+
+y = y ^ x:
+01100
+     ^
+11011
+     =
+10111, y is now 10111 (23 in decimal)
+
+
+x = x ^ y:
+11011
+     ^
+10111
+     =
+01100, x is now 01100 (12 in decimal)
+
+x is now 12
+y is now 23
