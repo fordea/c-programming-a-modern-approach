@@ -2,7 +2,7 @@ Explain what effect the following macro has on its arguments. You may assume
 that the arguments have the same type.
 
 #define M(x,y) ((x)^=(y), (y)^=(x), (x)^=(y))
-This macro swaps two values stored in x and y using three exlusive or operations
+This macro swaps two values stored in x and y in place (without using a third variable).
 
 For instance lets say we have two variables x and y with the following values:
 x = 23 (decimal), 10111 (binary)
