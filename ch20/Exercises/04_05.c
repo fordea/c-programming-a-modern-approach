@@ -6,18 +6,18 @@
 #define GET_GREEN(color) ((color) >> 8 & 0xff)
 #define GET_BLUE(color) ((color) >> 16 & 0xff)
 
-char *byte_to_binary(int n)
+char *byte_to_binary_str(int byte)
 {
-    static char bits[9];
-    bits[0] = '\0';
+    static char bit_string[9];
+    bit_string[0] = '\0';
 
-    int i;
-    for (i = 0x80; i > 0; i >>= 1)
-    {
-        strcat(bits, ((n & i) == i) ? "1" : "0");
+    int mask;
+    for (mask = 0x80; mask > 0; mask >>= 1) {
+        /* Check if the mask bit is set */
+        strcat(bit_string, byte & mask ? "1" : "0");
     }
 
-    return bits;
+    return bit_string;
 }
 
 int main(void)
@@ -31,15 +31,15 @@ int main(void)
 
     printf("All bytes in colors\n");
     for (i = 0; i < sizeof(long); i++) {
-        printf("Byte %d: %s\n", i, byte_to_binary(colors >> (i * 8)));
+        printf("Byte %d: %s\n", i, byte_to_binary_str(colors >> (i * 8)));
     }
 
     printf("\nRed (Byte 0)\n");
-    printf("Binary: %s\tDecimal: %ld\n", byte_to_binary(colors), GET_RED(colors));
+    printf("Binary: %s\tDecimal: %ld\n", byte_to_binary_str(colors), GET_RED(colors));
 
     printf("Green (Byte 1)\n");
-    printf("Binary: %s\tDecimal: %ld\n", byte_to_binary(colors >> 8), GET_GREEN(colors));
+    printf("Binary: %s\tDecimal: %ld\n", byte_to_binary_str(colors >> 8), GET_GREEN(colors));
 
     printf("Blue (Byte 2)\n");
-    printf("Binary: %s\tDecimal: %ld\n\n", byte_to_binary(colors >> 16), GET_BLUE(colors));
+    printf("Binary: %s\tDecimal: %ld\n\n", byte_to_binary_str(colors >> 16), GET_BLUE(colors));
 }
