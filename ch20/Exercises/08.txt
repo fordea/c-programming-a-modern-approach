@@ -1,0 +1,48 @@
+Let f be the following function:
+
+unsigned int f(unsigned int i, int m, int n)
+{
+    return (i >> (m + 1 - n)) & ~(~0 << n);
+}
+
+(a) What is the value of ~(~0 << n)?
+    0 is a value in which all bits are set to 0, therefore 0's complement is
+    a value in which all bits are set to 1.
+    (~0 << n) creates a mask with the bits 0 to n-1 set to 0, and the rest set
+    to 1.
+    Assuming ints take up 4 bytes and n is 5 then performing (~0 << n) will look as follows:
+    11111111 11111111 11111111 11100000
+    Right-most bit being least significant.
+    A bitwise complement is then performed again on this value, giving us
+    00000000 00000000 00000000 00011111
+
+(b) What does this function do?
+    Assuming that ints take up 4 bytes of space.
+    Let
+    i be 11100001 01101110 11001011 01110111
+    m be 12 (Decimal)
+    n be 5 (Decimal)
+
+    (m + 1 - n) = 8
+         i >> 8 = 00000000 11100001 01101110 11001011
+     ~(~0 << n) = 00000000 00000000 00000000 00011111
+
+
+    00000000 11100001 01101110 11001011
+                     &
+    00000000 00000000 00000000 00011111
+                     =
+    00000000 00000000 00000000 00001011
+
+    So this function returns a range of bits within i from position (m + 1 - n) upto
+    position (m + 1 - n) + n, in this example a range from bit 8, to bit 12 (inclusive).
+
+    Original value:
+                    Bits
+    32                                0
+    |                                 |
+    11100001 01101110 11001011 01110111
+                         ^   ^
+                         |   |
+                         12  8
+                         01011
