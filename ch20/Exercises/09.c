@@ -1,15 +1,32 @@
 #include <stdio.h>
 
-int count_ones(unsigned char ch);
+int count_ones_v1(unsigned char ch);
+int count_ones_v2(unsigned char ch);
+int count_ones_v3(unsigned char ch);
 int count_ones_no_loop(unsigned char ch);
 
 int main(void)
 {
-    char ch = 'A';
-    printf("%d\n", count_ones(ch));
+    unsigned char ch = 253;
+    printf("%d\n", count_ones_v1(ch));
+    printf("%d\n", count_ones_v2(ch));
+    printf("%d\n", count_ones_v3(ch));
 }
 
-int count_ones(unsigned char ch)
+/* Counts ones from least significant bit to most significant bit in O(8 bits) */
+int count_ones_v1(unsigned char ch)
+{
+    short count;
+    while (ch > 0) {
+        if (ch & 1) {
+            count++;
+        }
+        ch >>= 1;
+    }
+}
+
+/* Counts ones from most significant bit to least significant bit in O(8 bits) */
+int count_ones_v2(unsigned char ch)
 {
     unsigned char mask;
     short count = 0;
@@ -19,6 +36,17 @@ int count_ones(unsigned char ch)
             count++;
     }
 
+    return count;
+}
+
+/* Counts ones in O(number of 1 bits) */
+int count_ones_v3(unsigned char ch)
+{
+    short count = 0;
+    while (ch > 0) {
+        count++;
+        ch &= ch-1;
+    }
     return count;
 }
 
