@@ -3,6 +3,7 @@
 int count_ones_v1(unsigned char ch);
 int count_ones_v2(unsigned char ch);
 int count_ones_v3(unsigned char ch);
+int count_ones_recursive(unsigned char ch);
 int count_ones_no_loop(unsigned char ch);
 
 int main(void)
@@ -11,6 +12,8 @@ int main(void)
     printf("%d\n", count_ones_v1(ch));
     printf("%d\n", count_ones_v2(ch));
     printf("%d\n", count_ones_v3(ch));
+    printf("%d\n", count_ones_recursive(ch));
+    printf("%d\n", count_ones_no_loop(ch));
 }
 
 /* Counts ones from least significant bit to most significant bit in O(8 bits) */
@@ -50,8 +53,22 @@ int count_ones_v3(unsigned char ch)
     return count;
 }
 
+/* Counts ones, eliminating least significant 1 bit each recursive call. O(number of 1 bits) */
+int count_ones_recursive(unsigned char ch) {
+    if (ch == 0)
+        return 0;
+    return count_ones_recursive(ch & ch - 1) + 1;
+}
+
+/* Counts ones from most significant bit to least significant bit (no loop) O(8 bits) */
 int count_ones_no_loop(unsigned char ch)
 {
-    unsigned char mask = 255;
-
+    return ((ch >> 7) & 1)
+         + ((ch >> 6) & 1)
+         + ((ch >> 5) & 1)
+         + ((ch >> 4) & 1)
+         + ((ch >> 3) & 1)
+         + ((ch >> 2) & 1)
+         + ((ch >> 1) & 1)
+         + (ch & 1);
 }
