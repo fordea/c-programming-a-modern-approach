@@ -39,7 +39,7 @@ int count_ones_v2(unsigned char ch)
     return count;
 }
 
-/* Counts ones in O(number of 1 bits) */
+/* Counts ones, eliminating least significant 1 bit in each iteration. O(number of 1 bits) */
 int count_ones_v3(unsigned char ch)
 {
     short count = 0;
