@@ -1,22 +1,26 @@
 #include <stdio.h>
 #include <string.h>
 
-#define INT_BITS sizeof(int) * 8 - 1
+#define INT_BITS (sizeof(int) * 8 - 1)
 
 unsigned int reverse_bits(unsigned int n);
+unsigned int reverse_bits_v2(unsigned int n);
 char *byte_to_binary_str(int byte);
 void print_int_bits(int value);
 
 int main(void)
 {
-    unsigned int n = 0xff00ff00;
+    /* unsigned int n = 0xff00ff00; */
+    unsigned int n = 0xfabfe74d;
     printf("Original: ");
     print_int_bits(n);
-    n = reverse_bits(n);
+    /* n = reverse_bits(n); */
+    n = reverse_bits_v2(n);
     printf("Reversed: ");
     print_int_bits(n);
 }
 
+/* Reverse bits by copying to a new int in O(number of bits) */
 unsigned int reverse_bits(unsigned int n)
 {
     int i, m = 0;
@@ -25,6 +29,20 @@ unsigned int reverse_bits(unsigned int n)
             m |= (1 << ((INT_BITS) - i));
     }
     return m;
+}
+
+/* Reverse bits in place in O(number of bits / 2)
+ * Comapres bits 0..15 to bits 31..16 */
+unsigned int reverse_bits_v2(unsigned int n)
+{
+    int i;
+    for (i = 0; i <= INT_BITS / 2; i++) {
+        /* Ignore if both bits to be swapped  match */
+        if (((n >> INT_BITS - i) & 1) != ((n >> i) & 1)) {
+            n ^= (1 << INT_BITS - i) | (1 << i);
+        }
+    }
+    return n;
 }
 
 char *byte_to_binary_str(int byte)
