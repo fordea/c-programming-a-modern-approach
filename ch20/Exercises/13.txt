@@ -1,0 +1,18 @@
+If n is an unsigned int variable, what effect does the following statement
+have on the bits in n?
+
+n &= n - 1;
+
+This statement will remove the least significant 1 bit from n.
+
+E.g (Assuming rightmost bit is least significant):
+if n is 10110, then after this statement it would be 10100 because:
+    10110
+      &
+    10101
+      =
+    10100
+
+This is an efficient way of counting the number of 1 bits in a number should it
+be used in a loop that terminates when n is 0. The number of iterations will be
+dependent on the number of 1 bits, rather than the total number of bits.
