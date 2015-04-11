@@ -1,0 +1,13 @@
+The following function supposedly combines two bytes to form an unsigned
+short integer. Explain why the function doesn't work and show how to fix it.
+
+unsigned short create_short(unsigned char high_byte, unsighed char low_byte)
+{
+    return high_byte << 8 + low_byte;
+}
+
+Again, the problem with this function is caused by operator precedence, The
+addition operator has a higher precedence than the bitwise left shift operator,
+so we must enclose the bitwise left shift operation in parentheses:
+
+return (high_byte << 8) + low_byte;
