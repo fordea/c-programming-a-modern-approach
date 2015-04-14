@@ -5,8 +5,8 @@ typedef unsigned char BYTE;
 typedef unsigned short WORD;
 typedef unsigned int DWORD; /* int is 32 bit on my machine */
 
-/* Any struct members prefixed by d_ are dummy registers
- * to accomodate the high order half of the 32 bit registers
+/* Split the word registers in two to simulate dummy registers
+ * to accomodate the high order half of the 32 bit registers.
  * struct assumes little-endian byte storage */
 union {
     struct { /* 32 bit registers */
