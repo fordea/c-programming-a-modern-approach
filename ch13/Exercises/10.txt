@@ -9,6 +9,11 @@ char *duplicate(const char *p)
     return q;
 }
 
-Declaring q as a pointer only sets aside enough memory for a pointer variable, so it 
-doesn't allocate enough space to store a string. First we need to make a character array
-to store a string and then have q point to the first element in this array.
+q has been declared as a pointer to a char, however it has not been initialized
+so currently points nowhere in particular. We need to initialize it to point
+somewhere that will be large enough to accomodate a copy of the string pointed
+to by p includings its nul terminating char.
+
+To return a variable initialized within a function, we also need to make it
+static as the storage duration of variables defined within blocks is automatic
+by default.
