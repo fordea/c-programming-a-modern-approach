@@ -23,76 +23,70 @@ err.h           Utility functions for error messages.
 error.h         Declaration for error-reporting function.
 execinfo.h      Handles whether one error is printed per line.
 fcntl.h         Manipulate file descriptor.
-features.h
 fmtmsg.h        Message display handling.
 fnmatch.h       File/pathname match handling.
 fstab.h         Defines fstab struct handling internal representation of files.
 fts.h           Handles traversal of a file hierarchy.
 ftw.h           Handles walk through a directory tree.
 _G_config.h     Defines various configuration parameters.
-gconv.h
-getopt.h
-gettext-po.h
-glob.h
-gnu-versions.h
-grp.h
-gshadow.h
-iconv.h
-ifaddrs.h
-langinfo.h
-lastlog.h
-libgen.h
-libintl.h
-libio.h
-link.h
-malloc.h
-mcheck.h
-memory.h
-mntent.h
-monetary.h
-mqueue.h
-netdb.h
-nl_types.h
-nss.h
-obstack.h
-paths.h
-poll.h
-printf.h
-pthread.h
-pty.h
-pwd.h
-re_comp.h
-regex.h
-regexp.h
-resolv.h
-sched.h
-search.h
-semaphore.h
-sgtty.h
-shadow.h
-spawn.h
-stab.h
-stdc-predef.h
-stdio_ext.h
-strings.h
-stropts.h
-sudo_plugin.h
-syscall.h
-sysexits.h
-syslog.h
-tar.h
-termio.h
-termios.h
-thread_db.h
-ttyent.h
-ucontext.h
-ulimit.h
-unistd.h
-ustat.h
-utime.h
-utmp.h
-utmpx.h
-values.h
-wait.h
-wordexp.h
-xlocale.h
+gconv.h         Assists in writing additional gconv modules.
+getopt.h        Parsing command line arguments.
+gettext-po.h    Processing of PO files.
+glob.h          Defines structures and symbolic constants used by the glob() function.
+gnu-versions.h  Defines GNU version macros.
+grp.h           Declares the group database access structure.
+gshadow.h       Declares types and functions for shadow group suite.
+iconv.h         Facilitates character encoding conversion for certain applications.
+ifaddrs.h       Handles retrieval of networking interface addresses.
+langinfo.h      Contains language information constants.
+lastlog.h       Defines the struct lastlog in 4.3BSD
+libgen.h        Definitions for pattern matching functions.
+libintl.h       Message catalogs for internationalization.
+link.h          Data structure for communication from the run-time dynamic linker for loaded ELF shared objects.
+malloc.h        Prototypes and definition for malloc implementation.
+mcheck.h        Define debugging hooks for malloc.
+memory.h        Management of dynamic memory.
+mntent.h        Utilities for reading/writing fstab, mtab, etc.
+monetary.h      Monetary value formatting functions.
+mqueue.h        Defines type for message queue descriptors.
+netdb.h         Definitions for network database operations.
+nl_types.h      Defines various data types.
+nss.h           Handles NSS lookups.
+obstack.h       Defines object stack macros.
+paths.h         Defines PATH macros.
+poll.h          Definitions for the poll function.
+printf.h        Printf handler extension.
+pthread.h       Handles threads.
+pty.h           Declares the functions openpty and forkpty.
+pwd.h           Defines a password structure.
+re_comp.h       Defines regular expression matching functions.
+regex.h         Definitions for data structures and routines for the regular expressions library.
+regexp.h        Regular expression declarations.
+resolv.h        Defines types for queries.
+sched.h         Execution scheduling.
+search.h        Declarations for System V style searcing functions.
+semaphore.h     Defines type for performed semaphore operations.
+shadow.h        Declarations of types and functions for shadow password suite.
+spawn.h         Definitions for POSIX spawn interface.
+stab.h          Indicate the GNU stab.h is in use
+stdc-predef.h   Defines macros for the entirety of the translation unit.
+stdio_ext.h     Defines functions that access FILE structureinternals.
+strings.h       Defines non-standard string functions.
+stropts.h       Streams interface.
+sudo_plugin.h   Sudo Plugin interface.
+syscall.h       Linux syscall interface.
+sysexits.h      Defines exit codes for programs.
+syslog.h        Definitions for system error logging.
+tar.h           Extended tar format from POSIX.1
+termios.h       Defines values for terminal I/O interfaces.
+thread_db.h     Interface for debugging.
+ttyent.h        Defines tty terminal types.
+ucontext.h      Defines user context types.
+ulimit.h        Defines constants for ulimit function.
+unistd.h        Defines miscellaneous symbolic constants and types.
+utime.h         Set file access and modification times.
+utmp.h          Information about user currently using system.
+utmpx.h         User accounting database definitions.
+values.h        Old compatibility names for limits.h and float.h constants.
+wordexp.h       Defines word expansion types.
+xlocale.h       Definition of locale datatype.
