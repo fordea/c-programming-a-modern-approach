@@ -1,0 +1,12 @@
+When a macro hides a function, which must come first in the header file: the
+macro definition or the function prototype?
+
+When a macro definition hides a function, the preprocessor must have some
+prior knowledge that there is a function with a matching name, therefore its
+prototype must appear before the macro definition whether in the same file
+or another file that is included before the macro definition.
+
+This also prevents another issue which may occur if a macro were defined
+before a function with the same name. Would the preprocessor treat the
+function identifier as a macro being used? and thus replace the function
+identifier with the replacement list of the macro.
