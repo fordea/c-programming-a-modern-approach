@@ -1,0 +1,14 @@
+Find a standard header in which a macro hides a function.
+
+The assert.h standard header contains a macro hiding the assert function:
+
+# define assert(expr)							\
+  ((expr)								\
+   ? __ASSERT_VOID_CAST (0)						\
+   : __assert_fail (__STRING(expr), __FILE__, __LINE__, __ASSERT_FUNCTION))
+
+
+/* The following is not at all used here but needed for standard
+   compliance.  */
+extern void __assert (const char *__assertion, const char *__file, int __line)
+     __THROW __attribute__ ((__noreturn__));
