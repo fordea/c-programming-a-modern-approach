@@ -1,0 +1,27 @@
+(a) Why do the names of the "bit" macros (such as _UPPER) and the _ctype array
+    begin with an underscore?
+
+    The C standard states that any file that includes a standard header must
+    not reuse the names of macros contained within it. This ties in with the
+    rule that states that any macro name starting with an
+    underscore followed by a capital letter is reserved for use within
+    the standard library.
+    These restrictions gives programmers the ability to define common words as
+    macro names in their own header files (such as DIGIT, or CONTROL) as macros
+    within standard headers will likely be given names preceded by an underscore
+    starting with a capital letter (such as _DIGIT, or _CONTROL in ctype.h)
+
+(b) Explain what the _ctype array will contain. Assuming that the character
+    set is ASCII, show the values of the array elements at positions 9 (the
+    horizontal tab character), 32 (the space character), 65 (the letter A), and
+    94 (the ^ character).
+
+    The _ctype array is an array of integers representing characters in the
+    current locale that contains characteristics for each character in the
+    current character set. The array shall contain a total of 384 characters,
+    and can be indexed with any signed or unsigned char
+    (i.e. with an index value between -128 and 255).
+
+(c) What's the advantage of using an array to implement these macros?
+    By using an array with these values, the functions and macros within ctype.h
+    can be portable across different machines and different locales.
