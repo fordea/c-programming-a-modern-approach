@@ -1,0 +1,26 @@
+Find the error in the following program fragment and show how to fix it.
+
+FILE *fp;
+
+if (fp = fopen(filename, "r")) {
+    //read characters until end-of-file
+}
+fclose(fp);
+
+
+The error is that the program fragment always attempts to close the file
+pointed to by fp, however if fopen failed then fp would be a null pointer.
+Attempting to call fclose on a null pointer is an error.
+
+Fixed version:
+
+FILE *fp
+
+if (fp = fopen(filename, "r")) {
+    //read characters until end-of-file;
+}
+else {
+    printf("Error, cannot open file: %s\n", filename);
+    exit(EXIT_FAILURE);
+}
+fclose(fp);
