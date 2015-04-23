@@ -3,6 +3,6 @@ Let DOUBLE be the following macro:
 #define DOUBLE(x) 2*x
 
 (a) What is the value of DOUBLE(1+2)? 2*1+2 = 4
-(b) What is the value of 4/DOUBLE(2)? 4/1+2 = 6
+(b) What is the value of 4/DOUBLE(2)? 4/2*2 = 4
 (c) Fix the definition of DOUBLE:
     #define DOUBLE(x) (2*(x))
