@@ -1,14 +1,17 @@
 #include <stdio.h>
 
-/* macro to stringize the values of the macros __LINE__ and __FILE__ */
+/* Macro to stringize the values of the macro __LINE__ */
 #define STRINGIZE(x) #x
 
-/* We need to expand __LINE__ and __FILE__ first to their values before stringizing them,
-   otherwise STRINGIZE would only convert the macro names to string */
-#define EXPAND_TO_STRING(x) STRINGIZE(x) 
+/* We need to expand the __LINE__ macro to its integer value first before stringizing it,
+   otherwise STRINGIZE would only convert the macro name __LINE__ to string */
+#define EXPAND_TO_STRING(x) STRINGIZE(x)
 
-/* We can now call EXPAND_TO_STRING on both __LINE__ and __FILE__ and join them to other strings */
-#define LINE_FILE "Line " EXPAND_TO_STRING(__LINE__) " of file " EXPAND_TO_STRING(__FILE__)
+/* We can now call EXPAND_TO_STRING on __LINE__ (we do not need to do this with __FILE
+ * because the __FILE__ macro expands to a string). We could however invoke
+ * EXPAND_TO_STRING on the __FILE__ macro if we wanted quotes around the filename.
+ * */
+#define LINE_FILE "Line " EXPAND_TO_STRING(__LINE__) " of file " __FILE__
 
 int main(void)
 {
