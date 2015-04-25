@@ -17,7 +17,7 @@ int main(void)
 
 char *word_to_binary_str(int byte)
 {
-    static char bit_string[17];
+    static char bit_string[18];
     bit_string[0] = '\0';
 
     int mask;
