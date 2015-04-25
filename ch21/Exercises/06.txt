@@ -16,12 +16,30 @@
     horizontal tab character), 32 (the space character), 65 (the letter A), and
     94 (the ^ character).
 
-    The _ctype array is an array of integers representing characters in the
-    current locale that contains characteristics for each character in the
-    current character set. The array shall contain a total of 384 characters,
-    and can be indexed with any signed or unsigned char
-    (i.e. with an index value between -128 and 255).
+    The _ctype static array is used as a lookup table arranged by bitfields.
+    Each bit corresponds to a particular property of the character being looked
+    up (E.g if its a digit, alphanumeric, etc...). In the case of the examples
+    provided by the textbook bit 0 would represent if the char were uppercase,
+    bit 1 if it were lowercase, bit 2 if it's a digit, and so on...
+
+    _ctype array contains:
+
+    Position 9  (Horizontal tab char)
+    This character is considered a whitespace character so it will have bit 5 set:
+    00100000
+
+    Position 32 (Space char)
+    This character is considered a whitespace character so it will have bit 5 set:
+    00100000
+
+    Position 65 (Letter A):
+    This character is considered an uppercase character, so it will have bit 0 set:
+    00000001
+
 
 (c) What's the advantage of using an array to implement these macros?
-    By using an array with these values, the functions and macros within ctype.h
-    can be portable across different machines and different locales.
+    By using an array as a lookup table, we can ensure that the macro arguments
+    are only evaluated once, preventing the complications that arise when a macro
+    argument contains a side effect. Another benefit is that we can save
+    computation at runtime as an array access is simply retrieving a value from
+    memory, rather than performing some calculation.
