@@ -1,0 +1,26 @@
+Show how each of the following numbers will look if displayed by printf with
+%#012.5g as the conversion specification:
+
+# = flag (octal numbers begin with 0, nonzero hex with 0x or 0X, floating point
+    always have decimal point, trailing zeros aren't removed from numbers printed
+    using g or G.
+
+0 = flag (Numbers are padded with leading zeros up to the field width.)
+12 = min field width
+.5 = precision
+g = conversion specifier (double to f or e). e if exp < -4 or >= precision (5)
+
+(a) 83.7361 Exponent = 1 (f specifier)
+    00000083.736
+
+
+(b) 29748.6607 Exponent = 4 (f specifier)
+    00000029749.
+
+
+(c) 1054932234.0 Exponent = 9 (e specifier)
+    001.0549e+09
+
+
+(d) 0.0000235218 Exponent = -5 (e specifier)
+    002.3522e-05

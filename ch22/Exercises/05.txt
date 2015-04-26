@@ -1,0 +1,14 @@
+Is there any difference between the printf conversion specifications %.4d and
+%04d? If so, explain what it is.
+
+These expressions are equivalent.
+
+As the conversion specifier is d, we must be dealing with an int value.
+The first expression '%.4d' contains the precision '.4'.
+When the precision modifier is applied to an int value, it signifies the minimum
+number of digits that must be printed (leading zeros added if the number has
+fewer digits).
+
+The second expression '%04d' contains the flag 0 (zero) which means that leading
+zeros are padded up to the field width. As the field width is 4, this means
+that any integers with 3 digits or fewer will have leading zeros added.
