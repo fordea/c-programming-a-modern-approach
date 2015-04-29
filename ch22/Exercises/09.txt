@@ -1,0 +1,13 @@
+Which one of the following calls is not a valid way of reading one character
+from the standard input stream?
+
+(a) getch()
+(b) getchar()
+(c) getc(stdin)
+(d) fgetc(stdin)
+
+Answer: a
+getch() behaves differently than the other three because it doesn't read
+from a buffer (so it doesn't read from the stdin input stream), getch() instead
+waits for a character to be input when it is called, and then immediately
+returns the input character without the user pressing the Enter key.

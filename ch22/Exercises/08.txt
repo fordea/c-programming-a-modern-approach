@@ -1,0 +1,8 @@
+In previous chapters, we've used the scanf format string " %c" when we wanted to
+skip white-space characters and read a nonblank character. Some programmers use
+"%1s" instead. Are the two techniques equivalent? If not, what are the
+differences?
+
+They are similar but not identical. The difference being that a null character
+will be inserted at the end of the char array when %s is used (as strings are
+null terminated).
