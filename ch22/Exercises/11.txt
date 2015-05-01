@@ -1,0 +1,20 @@
+The following loop appears in the fcopy.c program:
+
+while ((ch = getc(source_fp)) != EOF)
+    putc(ch, dest_fp);
+
+Suppose that we neglected to put parentheses around ch = getc(source_fp):
+while (ch = getc(source_fp) != EOF)
+    putc(ch, dest_fp);
+
+Would the program compile without an error? IF so, what would the program do
+when it's run?
+
+The program will compile without error, however it will behave differently due
+to operator precedence. In the first case, we wish to assign the value returned
+from getc(source_fp) to ch, THEN we want to compare the value stored in ch to
+the EOF macro. In the second case, we haven't parenthesised the assignment
+operation, and assignment happens to be the second lowest operator precedence,
+so what happens instead is that getc(source_fp) is compared to EOF using != first.
+Then the result of the equality operation is assigned to ch. The expression
+still correctly tests for EOF, but it doesn't provide ch with the correct values.
