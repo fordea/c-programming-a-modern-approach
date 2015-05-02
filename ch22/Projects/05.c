@@ -28,9 +28,11 @@ int main(int argc, char *argv[])
 
     if ((fpin = fopen(argv[1], "rb")) == NULL) {
         printf("Error, cannot open input file %s.\n", argv[1]);
+        exit(EXIT_FAILURE);
     }
     if ((fpout = fopen(argv[2], "wb")) == NULL) {
         printf("Error, cannot create output file %s.\n", argv[2]);
+        exit(EXIT_FAILURE);
     }
 
 
