@@ -3,7 +3,7 @@
 #include <ctype.h>
 
 #define MAX_BYTES 10
-typedef char BYTE;
+typedef unsigned char BYTE;
 
 void print_table_head(void);
 void printbytes(BYTE a[], int bytes_read, int max_bytes);
