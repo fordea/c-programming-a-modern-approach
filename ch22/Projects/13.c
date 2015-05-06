@@ -60,6 +60,7 @@ int main(void)
             flights[prev_f].arrival_time / 60,
             flights[prev_f].arrival_time % 60);
 
+    fclose(fp);
     return 0;
 }
 
