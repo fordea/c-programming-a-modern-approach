@@ -33,6 +33,7 @@ void update(void);
 void print(void);
 void dump(void);
 void restore(void);
+int compare_parts(const void *p1, const void *p2);
 
 /**********************************************************
  * main: Prompts the user to enter an operation code,     *
@@ -114,6 +115,7 @@ void insert(void)
   printf("Enter quantity on hand: ");
   scanf("%d", &inventory[num_parts].on_hand);
   num_parts++;
+  qsort(inventory, num_parts, sizeof (struct part), compare_parts);
 }
 
 /**********************************************************
@@ -208,4 +210,18 @@ void restore(void)
     }
     num_parts = fread(inventory, sizeof(struct part), MAX_PARTS, fp);
     fclose(fp);
+}
+
+int compare_parts(const void *p1, const void *p2)
+{
+    struct part *part1 = (struct part *)p1;
+    struct part *part2 = (struct part *)p2;
+
+    if (part1->number < part2->number) {
+        return -1;
+    } else if (part1->number > part2->number) {
+        return 1;
+    } else {
+        return strcmp(part1->name, part2->name);
+    }
 }
