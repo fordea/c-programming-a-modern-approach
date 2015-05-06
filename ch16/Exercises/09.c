@@ -27,11 +27,10 @@ int getRed(struct color c)
 
 bool equal_color(struct color color1, struct color color2)
 {
-    bool equal = false;
-    equal = (color1.red == color2.red);
-    equal = (color1.green == color2.green);
-    equal = (color1.blue == color2.blue);
-    return equal;
+    return (  color1.red == color2.red
+           && color1.green == color2.green
+           && color1.blue == color2.blue
+           );
 }
 
 struct color brighter(struct color c)
