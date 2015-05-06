@@ -13,16 +13,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "inventory.h"
 #include "readline.h"
-
-#define NAME_LEN 25
-#define MAX_PARTS 100
-
-struct part {
-  int number;
-  char name[NAME_LEN+1];
-  int on_hand;
-} inventory[MAX_PARTS];
 
 int num_parts = 0;   /* number of parts currently stored */
 
