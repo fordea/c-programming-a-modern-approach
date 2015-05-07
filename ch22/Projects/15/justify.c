@@ -1,0 +1,59 @@
+/*********************************************************
+ * From C PROGRAMMING: A MODERN APPROACH, Second Edition *
+ * By K. N. King                                         *
+ * Copyright (c) 2008, 1996 W. W. Norton & Company, Inc. *
+ * All rights reserved.                                  *
+ * This program may be freely distributed for class use, *
+ * provided that this copyright notice is retained.      *
+ *********************************************************/
+
+/* justify.c (Chapter 15, page 363) */
+/* Formats a file of text */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "line.h"
+#include "word.h"
+#include <assert.h>
+
+#define MAX_WORD_LEN 20
+
+int main(int argc, char *argv[])
+{
+  FILE *fpin;
+  FILE *fpout;
+  char word[MAX_WORD_LEN+2];
+  int word_len;
+
+  if (argc != 3) {
+      fprintf(stderr, "Usage: programname inputfile outputfile.\n");
+      exit(EXIT_FAILURE);
+  }
+  if ((fpin = fopen(argv[1], "r")) == NULL) {
+      fprintf(stderr, "Error opening file %s.\n", argv[1]);
+      exit(EXIT_FAILURE);
+  }
+  if ((fpout = fopen(argv[2], "w")) == NULL) {
+      fprintf(stderr, "Error creating file %s.\n", argv[2]);
+      exit(EXIT_FAILURE);
+  }
+
+  clear_line();
+  for (;;) {
+    read_word(word, MAX_WORD_LEN+1, fpin);
+    word_len = strlen(word);
+    if (word_len == 0) {
+      flush_line(fpout);
+      break;
+    }
+    if (word_len + 1 > space_remaining()) {
+      write_line(fpout);
+      clear_line();
+    }
+    add_word(word);
+  }
+  fclose(fpin);
+  fclose(fpout);
+  return 0;
+}
