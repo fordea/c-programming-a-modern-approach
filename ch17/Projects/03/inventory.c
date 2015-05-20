@@ -111,15 +111,15 @@ void insert(void)
 
   /* Inserts the new part in the inventory, ordered by part number */
   struct part **pp = &inventory;
-  struct part *entry = *pp;
-  while (entry) {
-      if (entry->number > part_number) {
+  /* struct part *entry = *pp; */
+  while (*pp) {
+      if ((*pp)->number > part_number) {
           break;
       }
-      pp = &entry->next;
-      entry = entry->next;
+      pp = &(*pp)->next;
+      /* entry = entry->next; */
   }
-  new_part->next = entry;
+  new_part->next = *pp;
   *pp = new_part;
 }
 
@@ -173,14 +173,15 @@ void erase(void)
     scanf("%d", &part_number);
 
     struct part **pp = &inventory;
-    struct part *entry = inventory;
-    while (entry) {
-        if (entry->number == part_number) {
-            *pp = entry->next;
-            free(entry);
+    struct part *temp;
+    while (*pp) {
+        if ((*pp)->number == part_number) {
+            temp = *pp;
+            *pp = (*pp)->next;
+            free(temp);
+            continue;
         }
-        pp = &entry->next;
-        entry = entry->next;
+        pp = &(*pp)->next;
     }
 }
 

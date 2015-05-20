@@ -20,12 +20,13 @@ int main(void)
 {
     printf("Normal linked list\n");
     add_to_list(1);
-    add_to_list(2);
-    add_to_list(3);
-    add_to_list(4);
-    add_to_list(5);
+    /* add_to_list(2); */
+    /* add_to_list(3); */
+    /* add_to_list(4); */
+    /* add_to_list(5); */
     print_node_values();
-    clear_list();
+    delete_from_list(1);
+    /* clear_list(); */
     printf("\n");
 
     printf("Ordered linked list\n");
@@ -69,7 +70,7 @@ void *add_to_list(int n)
     size++;
 }
 
-/* Delete a node from the linked list. Argument pp is a pointer to a pointer
+/* Delete node(s) from the linked list. Argument pp is a pointer to a pointer
  * to the first node in the list, n is the value of the node(s) to delete */
 void *delete_from_list(int n)
 {
@@ -82,6 +83,7 @@ void *delete_from_list(int n)
             *pp = (*pp)->next;
             free(temp);
             size--;
+            continue;
         }
         pp = &(*pp)->next;
     }
