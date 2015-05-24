@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_REMIND 50   /* maximum number of reminders */
+#define MAX_REMIND 3   /* maximum number of reminders */
 #define MSG_LEN 60      /* max length of reminder message */
 
 struct vstring {
@@ -31,7 +31,6 @@ int main(void)
   int day, i, j, num_remind = 0;
 
   for (;;) {
-    printf("num remind: %d\n", num_remind);
     if (num_remind == MAX_REMIND) {
       printf("-- No space left --\n");
       break;
@@ -50,20 +49,14 @@ int main(void)
     for (j = num_remind; j > i; j--)
       reminders[j] = reminders[j-1];
 
-    struct vstring *new_vstring  = malloc(sizeof(struct vstring) + 3 + strlen(msg_str));
-    new_vstring->len = 3 + strlen(msg_str);
-    reminders[i] = new_vstring;
+    reminders[i] = malloc(sizeof(struct vstring) + 2 + strlen(msg_str) + 1);
     if (reminders[i] == NULL) {
       printf("-- No space left --\n");
       break;
     }
-
-    new_vstring->chars[0] = day_str[0];
-    new_vstring->chars[1] = day_str[1];
-    new_vstring->chars[2] = ' ';
-
-    for (i = 0; i < new_vstring->len; i++)
-        new_vstring->chars[i + 3] = msg_str[i];
+    strcpy(reminders[i]->chars, day_str);
+    strcat(reminders[i]->chars, msg_str);
+    reminders[i]->len = strlen(reminders[i]->chars);
 
     num_remind++;
   }
