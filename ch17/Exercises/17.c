@@ -16,14 +16,15 @@ int main(void)
     }
     printf("\n\n");
 
-    qsort(a, 100, sizeof(int), comparison);
+    /* qsort(a + 49, 50, sizeof(int), comparison); */
+    qsort(a + (sizeof(a) / sizeof(a[0])) - 50, 50, sizeof(int), comparison);
 
-    printf("Sorted array:\n");
+    printf("Sorted second half:\n");
     for (i = 0; i < 100; i++) {
         printf("%d ", a[i]);
     }
     printf("\n");
- 
+
     return 0;
 }
 
