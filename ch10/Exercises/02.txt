@@ -23,7 +23,7 @@ For each of the following scopes, list all variable and parameter names visible
 in that scope. 
 
 (a) The f function: b and d inside the f function. c external variable.
-(b) The g function: a (g parameter), b and c external variables.
+(b) The g function: a (g parameter), external variable b, and local variable c.
 (c) The block in which a and d are declared: a and d inside the block, c inside g function,
     b external variable.
 (d) The main function: b external variable, c and d inside main function.
