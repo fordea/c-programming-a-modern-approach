@@ -11,7 +11,7 @@ int main(void)
                                 {4, 8, 8, 12, 3},
                                 {3, 4, 8, 3, 12}};
 
-    printf("Sum: %d", sum_two_dimensional_array(a[0], ROWS * COLS));
+    printf("Sum: %d", sum_two_dimensional_array(*a, ROWS * COLS));
 
     return 0;
 }
