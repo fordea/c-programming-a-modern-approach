@@ -4,7 +4,7 @@ int main(void)
 {
     int i, n, odd, square;
 
-    printf("This program prints a table of squres.\n");
+    printf("This program prints a table of squares.\n");
     printf("Enter a number of entries in table: ");
     scanf("%d", &n);
 
