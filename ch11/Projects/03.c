@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void reduce(int numerator, int denominator,
             int *reduced_numerator,
@@ -9,7 +10,7 @@ int main(void)
     int num, denom, reduced_numerator = 0, reduced_denominator = 0;
 
     printf("Enter a fraction: ");
-    scanf("%d /%d", &num, &denom);
+    scanf("%d / %d", &num, &denom);
 
     reduce(num, denom, &reduced_numerator, &reduced_denominator); 
 
@@ -28,7 +29,13 @@ void reduce(int numerator, int denominator,
        m = n;
        n = temp;
     }
-
-    *reduced_numerator = numerator / m;
-    *reduced_denominator = denominator / m;
+    
+    if (denominator == 0) {
+       printf("Not a valid fraction.");
+       exit(EXIT_FAILURE);
+    }
+    else {
+       *reduced_numerator = numerator / m;
+       *reduced_denominator = denominator / m;
+    }
 }
