@@ -154,7 +154,7 @@ void analyze_hand(int num_in_rank[], int num_in_suit[], bool *straight,
   for (rank = 0; rank < NUM_RANKS; rank++) {
     if (num_in_rank[rank] == 4) *four = true;
     if (num_in_rank[rank] == 3) *three = true;
-    if (num_in_rank[rank] == 2) *pairs++;
+    if (num_in_rank[rank] == 2) *pairs += 1;
   }
 }
 
