@@ -3,9 +3,9 @@ scanf format strings equivalency
 (a) "%d" vs. " %d" - Equivalent, white-space character in format string matches
 ANY number of white-space characters in the input string (including none).
 
-(b) "%d-%d-%d" vs. "%d -%d -%d" - Equivalent, white-space characters in format
-string match ANY number of white-space characters in the input string
-(including none).
+(b) "%d-%d-%d" vs. "%d -%d -%d" - Different, the first one does not work 
+properly white-space between the conversion specification and dash, but the 
+second one does.
 
 (c) "%f" vs. "%f " - Different Input, But capture same values (a single float)
 "%f" requires a number to be input and the user to hit enter. e.g: 34.05->
