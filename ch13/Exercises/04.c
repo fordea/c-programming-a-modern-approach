@@ -18,17 +18,17 @@ int main(void)
 
 int read_line_a(char str[], int n)
 {
-    int ch, i = 0;
-
-    while ((ch = getchar()) != '\n') {
-        if (i == 0 && isspace(ch)); //do nothing
-
-        else if (i < n)
-            str[i++] = ch;
-    }
-
-    str[i] = '\0';
-    return i;
+	int ch, i = 0;
+	
+	while (str[i] == ' ' || str[i] == '\n')
+		i++;
+	
+	while ((ch = getchar()) != '\n') {
+		if (i < n) 
+			str[i++] = ch;
+	}
+	str[i] = '\0';
+	return i;
 }
 
 int read_line_b(char str[], int n)
