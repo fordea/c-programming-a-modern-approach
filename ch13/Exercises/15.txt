@@ -17,4 +17,5 @@ int f(char *s, char *t)
 (c) In general, what value does f return when passed two strings s and t?
     It returns the address of the pointer of the first character in s that doesn't have
     a matching character in t minus the address of the first character in s. This is
-    equivalent to returning the index of that particular character in s.
+    equivalent to returning the index of that particular character in s.However, if all
+    the characters in s have matching characters in t, it will return the length of s.
