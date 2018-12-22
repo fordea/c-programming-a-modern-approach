@@ -25,7 +25,10 @@ void reverse_name(char *name)
     initial = *p++;
 
     while (*p && *p++ != ' ');
-
+    
+    while (*p && *p == ' ')
+        p++;
+    
     while (*p && *p != '\n')
         putchar(*p++);
     printf(", %c.", initial);
