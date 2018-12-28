@@ -16,7 +16,12 @@ struct color make_color(int red, int green, int blue)
         c.green = 0;
     if (c.blue < 0)
         c.blue = 0;
-
+    if (c.red > 255)
+        c.red = 255;
+    if (c.green > 255)
+        c.green = 255;
+    if (c.blue > 255)
+        c.blue = 255;
     return c;
 }
 
