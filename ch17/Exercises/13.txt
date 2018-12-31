@@ -27,7 +27,7 @@ Special cases version:
 struct node *insert_into_ordered_list(struct node *list, struct node *new_node)
 {
     struct node *cur = list, *prev = NULL;
-    for (; cur; prev = cur; cur = cur->next) {
+    for (; cur; prev = cur, cur = cur->next) {
         if (cur->value > new_node->value)
             break;  /* Break when we've found the node thats greater than new_node */
     }
@@ -35,8 +35,8 @@ struct node *insert_into_ordered_list(struct node *list, struct node *new_node)
         return new_node;        /* Case where list is empty */
     }
     else if (prev == NULL) {
-        list->next = new_node;
-        new_node->next = cur;   /* Case where inserting before first node */
+        new_node->next = cur;
+        list = new_node;   /* Case where inserting before first node */
     }
     else {
         prev->next = new_node;
