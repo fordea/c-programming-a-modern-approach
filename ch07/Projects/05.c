@@ -12,7 +12,7 @@ int main(void)
         
         switch (toupper(ch)) {
             case 'A': case 'E': case 'I': case 'L': case 'N':
-            case '0': case 'R': case 'S': case 'T': case 'U':
+            case 'O': case 'R': case 'S': case 'T': case 'U':
                 scrabble_value += 1;
                 break;
             case 'D': case 'G':
