@@ -35,16 +35,15 @@
     0 7 8 9
     
 (c) i = 7; j = 8; k = 9;
-    printf("%d ", (i = j) || (j - k));
+    printf("%d ", (i = j) || (j = k));
     printf("%d %d %d", i, j, k);
 
-    (i = j) || (j - k)
-    8 || (8 - 9)
-    8 || -1
+    (i = j) || (j = k)
+    8 || 8
     1
 
     Expected output:
-    1 8 8 9
+    1 8 9 9
 
 (d) i = 1; j = 1; k = 1;
     printf("%d ", ++i || ++j && ++k);
