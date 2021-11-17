@@ -10,7 +10,7 @@
 int main(void)
 {
     int x, y, n;
-    x = 5; y = 10, n = 11;
+    x = 5; y = 10; n = 11;
 
     printf("CHECK(%d,%d,%d) = %d\n", x, y, n, CHECK(x,y,n));
     printf("MEDIAN(%d,%d,%d) = %d\n", x, y, n, MEDIAN(x,y,n));
