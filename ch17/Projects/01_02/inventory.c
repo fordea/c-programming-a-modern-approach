@@ -164,9 +164,8 @@ void update(void)
 /**********************************************************
  * print: Prints a listing of all parts in the database,  *
  *        showing the part number, part name, and         *
- *        quantity on hand. Parts are printed in the      *
- *        order in which they were entered into the       *
- *        database.                                       *
+ *        quantity on hand. Parts are printed in          *
+ *        order of part numbers                           *
  **********************************************************/
 void print(void)
 {
