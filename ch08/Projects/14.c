@@ -6,6 +6,7 @@ int main(void)
     int i, j, sentence_length = 0, current_word_length = 0;
 
     /* Populate sentence array until terminating character found */
+    printf("Enter a sentence: ");
     for (i = 0; (ch = getchar()) != '\n' && i < 200; i++) {
         if (ch == '.' || ch == '?' || ch == '!') {
             terminating_char = ch;
@@ -15,7 +16,7 @@ int main(void)
             sentence_length++;
         }
     }
-
+     printf("Reversal of sentence: ");
     /* Iterate backwards through sentence array */
     for (i = sentence_length - 1; i >= 0; i--) {
 
