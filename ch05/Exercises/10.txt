@@ -1,2 +1,10 @@
-The switch statment evalutes 1 % 3 (the remainder of 1 / 3) and prints the result
-in string format. In this case 1 % 3 = 1, so case 0: is executed to print "one".
+
+
+We can see that there are no break statements after each case statement, 
+causing the program to "fall through" to the next cases without checking any case label.
+
+First of all, The switch statement evaluates the "controlling expression" 1 % 3 (the remainder of 1 / 3) and prints the result in string format.
+Then, control jumps to the case label that matches it (case: 1), thus it prints "one",
+after that, control falls through to the next case (case:2), and prints "two".
+
+Therefore, the expected output is "onetwo".
